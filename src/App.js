@@ -6,7 +6,7 @@ import Comment from './Comment';
 import Header from './Header';
 import options from './FoodList';
 import { FaUtensils } from 'react-icons/fa';
-import './tailwind.css';
+import './index.css';
 
 const LeftPanel = ({ setCommentData }) => {
 const [morningMenuModalIsOpen, setMorningMenuModalIsOpen] = useState(false);
@@ -182,6 +182,7 @@ return (
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
 		<RightPanel commentData={commentData} />
 		</div>
+		<button className="px-6 py-2 bg-green-300">OK</button>
 	</div>
 	</div>
 );
