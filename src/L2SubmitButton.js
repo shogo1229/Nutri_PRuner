@@ -1,6 +1,3 @@
-// 1. axiosをインストール
-// npm install axios
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
