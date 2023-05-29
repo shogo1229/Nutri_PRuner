@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import options from './FoodList';
 
-const Gallery = ({Time}) => {
+const GallerySelect = ({SelectMenu}) => {
     const [selectedDishes, setSelectedDishes] = useState([]);
 
     const handleDishSelect = (selectedOptions) => {
@@ -10,7 +10,7 @@ const Gallery = ({Time}) => {
 
     return (
     <div>
-        <h1>your Select Menu is {Time}</h1>
+        <h1>your Select Menu is {SelectMenu}</h1>
         <div className="flex flex-wrap justify-center">
         {options.map((dish) => (
             <div
@@ -40,4 +40,4 @@ const Gallery = ({Time}) => {
     );
 };
 
-export default Gallery;
+export default GallerySelect 

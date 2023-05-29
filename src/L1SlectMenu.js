@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GalleryModal from './ ModalOpen';
+import ModalOpen from './ ModalOpen';
 
 const SelectMenu = () => {
 	const array = ["Morning", "Lunch", "Dinner", "Snack"];
@@ -26,7 +26,7 @@ const SelectMenu = () => {
 			{
 				array.map((value, index) => {
 					//return state[index]?<h1>{value}</h1>:<></>
-					return state[index]?<h1><GalleryModal index={array[index]}/></h1>:<></>
+					return state[index]?<h1><ModalOpen Menu={array[index]}/></h1>:<></>
 				})
 			}
 		</>
