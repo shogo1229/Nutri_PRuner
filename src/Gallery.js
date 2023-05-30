@@ -26,14 +26,14 @@ const GallerySelect = ({ SelectMenu }) => {
 		</div>
 	))}
 	</div>
-		<h3>選ばれた料理:</h3>
+		{/* <h3>選ばれた料理:</h3>
 		<div className="flex">
 			{selectedDishes.map((dish, index) => (
 		<div key={index} className="w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg relative">
 			{dish.label}
 		</div>
 		))}
-		</div>
+		</div> */}
 	</div>
 	);
 };
