@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ModalOpen from './ ModalOpen';
 
+
+
 const SelectMenu = () => {
 	const array = ["Morning", "Lunch", "Dinner", "Snack"];
 	const flag = [false, false, false, false]
@@ -29,11 +31,12 @@ const SelectMenu = () => {
 			);
 			})}
 		</div>
+		<>
 
+		</>
 			{
 				array.map((value, index) => {
-					//return state[index]?<h1>{value}</h1>:<></>
-					return state[index]?<h1><ModalOpen Menu={array[index]}/></h1>:<></>
+					return state[index]?<ModalOpen Menu={array[index]} index={index}/>:<></>
 				})
 			}
 		</>
