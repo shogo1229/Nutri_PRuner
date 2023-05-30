@@ -8,21 +8,28 @@ const SelectMenu = () => {
 
 	return (
 		<>
+		<div style={{ display: 'flex', height:'25%' , flexDirection: 'column' }}>
 			{array.map((value, index) => {
-				return (
-					<button onClick={
-						() => {
-							setState((prev) => {
-								const ary = [false]
-								ary[index] = true
-								return ary
-							})
-						}
-					}>
-						button : {array[index]}
-					</button>
-				)
+			return (
+			<>
+			<button
+				class="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
+				onClick={() => {
+				setState((prev) => {
+					const ary = [false];
+					ary[index] = true;
+					return ary;
+				});
+			}}
+			>
+			{array[index]}
+			</button>
+			text
+			</>
+			);
 			})}
+		</div>
+
 			{
 				array.map((value, index) => {
 					//return state[index]?<h1>{value}</h1>:<></>
@@ -32,4 +39,5 @@ const SelectMenu = () => {
 		</>
 	);
 }
+
 export default SelectMenu

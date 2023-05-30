@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import WebGL from './R1WebGL';
 import Comment from './R2Comment';
 import SelectMenu from './L1SlectMenu';
