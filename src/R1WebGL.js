@@ -1,13 +1,15 @@
 import React from 'react';
+import { Unity, useUnityContext } from "react-unity-webgl";
 
 const WebGL = ({index}) => {  
-	return (
-		<>
-		<p>Fuck Web WebGL</p>
-		<h1>{index}</h1>
-		</>
+	const { unityProvider } = useUnityContext({
+		loaderUrl: "unity/buildwebGL.loader.js",
+		dataUrl: "unity/buildwebGL.data",
+		frameworkUrl: "unity/buildwebGL.framework.js",
+		codeUrl: "unity/buildwebGL.wasm",
+	});
 
-		);
-	};
+	return <Unity unityProvider={unityProvider} style={{width:"100%",height:"70vh"}}/>;
+}
 
 export default WebGL;
