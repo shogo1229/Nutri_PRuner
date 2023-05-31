@@ -4,8 +4,16 @@ import options from './FoodList';
 const GallerySelect = ({ SelectMenu }) => {
 	const [selectedDishes, setSelectedDishes] = useState([]);
 
-	const handleDishSelect = (selectedOptions) => {
-	setSelectedDishes(selectedOptions);
+	const toggleDishSelection = (dish) => {
+	const isSelected = selectedDishes.some((selected) => selected.value === dish.value);
+	if (isSelected) {
+	  // 選択済みの場合、選択解除する
+		const updatedSelection = selectedDishes.filter((selected) => selected.value !== dish.value);
+		setSelectedDishes(updatedSelection);
+	} else {
+	  // 選択されていない場合、追加する
+		setSelectedDishes([...selectedDishes, dish]);
+	}
 	};
 
 	return (
@@ -14,26 +22,18 @@ const GallerySelect = ({ SelectMenu }) => {
 		<div className="flex flex-wrap justify-center">
 		{options.map((dish) => (
 			<div
-				key={dish.value}
-				className={`w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
+			key={dish.value}
+			className={`w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
 				selectedDishes.some((selected) => selected.value === dish.value)
 				? 'border-2 border-blue-500'
 				: ''
 			}`}
-			onClick={() => handleDishSelect([...selectedDishes, dish])}
+			onClick={() => toggleDishSelection(dish)}
 			>
 			{dish.label}
-		</div>
-	))}
-	</div>
-		{/* <h3>選ばれた料理:</h3>
-		<div className="flex">
-			{selectedDishes.map((dish, index) => (
-		<div key={index} className="w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg relative">
-			{dish.label}
-		</div>
+			</div>
 		))}
-		</div> */}
+		</div>
 	</div>
 	);
 };
