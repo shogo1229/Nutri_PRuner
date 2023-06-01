@@ -4,12 +4,12 @@ import Comment from './R2Comment';
 
 import ModalOpen_morning from './ModalOpen_morning';
 import ModalOpen_lunch from './ModalOpen_lunch';
+import ModalOpen_dinner from './ModalOpen_dinner';
+import ModalOpen_snack from './ModalOpen_snack';
 
 import Header from './Header';
 import './index.css';
 import Modal from 'react-modal';
-import { Provider } from 'react-redux';
-import store from './store';
 import { useSelector } from "react-redux"
 Modal.setAppElement('#root');
 
@@ -35,6 +35,33 @@ const LeftPanel = () => {
 	const handleCloseModal_lunch = () => {
 	setIsModalOpen_lunch(false);
 	};
+
+	
+
+	const [isModalOpen_dinner, setIsModalOpen_dinner] = useState(false);
+	const selectedDishes_dinner = useSelector((state) => state.selectedDishes_dinner);
+
+	const handleOpenModal_dinner = () => {
+	setIsModalOpen_dinner(true);
+	};
+
+	const handleCloseModal_dinner = () => {
+	setIsModalOpen_dinner(false);
+	};
+
+
+
+	const [isModalOpen_snack, setIsModalOpen_snack] = useState(false);
+	const selectedDishes_snack = useSelector((state) => state.selectedDishes_snack);
+
+	const handleOpenModal_snack = () => {
+	setIsModalOpen_snack(true);
+	};
+
+	const handleCloseModal_snack = () => {
+	setIsModalOpen_snack(false);
+	};
+
 
 return (
 	<div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
@@ -67,21 +94,27 @@ return (
 		<div style={{ flex: '1 1 20%' }}>
 		<button
 			className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
-			//onClick={() => handleOpenModal('Dinner')}
+			onClick={() => handleOpenModal_dinner()}
 		>
 			Dinner
 		</button>
 		<div>Your Select Menu:</div>
+		{selectedDishes_dinner.map((dish) => (
+			<div key={dish.value}>{dish.label}</div>
+			))}
 		</div>
 
 		<div style={{ flex: '1 1 20%' }}>
 		<button
 			className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
-			//onClick={() => handleOpenModal('Snack')}
+			onClick={() => handleOpenModal_snack()}
 		>
-		Snack
+			Snack
 		</button>
 		<div>Your Select Menu:</div>
+		{selectedDishes_snack.map((dish) => (
+			<div key={dish.value}>{dish.label}</div>
+			))}
 		</div>
 
 		{isModalOpen_morning && (
@@ -90,6 +123,14 @@ return (
 
 		{isModalOpen_lunch && (
 		<ModalOpen_lunch Menu={"lunch"} closeModalFn={handleCloseModal_lunch} />
+		)} 
+
+		{isModalOpen_dinner && (
+		<ModalOpen_dinner Menu={"dinner"} closeModalFn={handleCloseModal_dinner} />
+		)} 
+
+		{isModalOpen_snack && (
+		<ModalOpen_snack Menu={"snack"} closeModalFn={handleCloseModal_snack} />
 		)} 
 
 		<div style={{ flex: '1 1 20%' }}>

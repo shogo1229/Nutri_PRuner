@@ -1,14 +1,14 @@
-const selectedDishesReducer_morning = (state , action) => {
+const selectedDishesReducer_snack = (state , action) => {
   if (typeof state ==="undefined"){
       return []
   }
 
   switch (action.type) {
-    case 'Morning':
+    case 'Snack':
       return action.payload;
     default:
       return state;
   }
 };
 
-export default selectedDishesReducer_morning;
+export default selectedDishesReducer_snack;

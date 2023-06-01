@@ -1,7 +1,10 @@
-// reducers/selectedDishes_lunch.js
-const selectedDishesReducer_lunch = (state = [], action) => {
+const selectedDishesReducer_lunch = (state , action) => {
+  if (typeof state ==="undefined"){
+      return []
+  }
+
   switch (action.type) {
-    case 'UPDATE_SELECTED_DISHES':
+    case 'Lunch':
       return action.payload;
     default:
       return state;

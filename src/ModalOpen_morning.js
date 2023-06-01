@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-import React, { useState } from "react";
 import options from './FoodList';
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedDishes_morning } from "./actions/updateSelectedDishes";
