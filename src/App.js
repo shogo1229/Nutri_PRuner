@@ -5,11 +5,15 @@ import ModalOpen from './ ModalOpen';
 import Header from './Header';
 import './index.css';
 import Modal from 'react-modal';
+import { Provider } from 'react-redux';
+import store from './store';
+import { useSelector } from "react-redux"
 Modal.setAppElement('#root');
 
 const LeftPanel = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedMenu, setSelectedMenu] = useState('');
+	const selectedDishes = useSelector((state) => state.selectedDishes);
 
 	const handleOpenModal = (menu) => {
 	setSelectedMenu(menu);
@@ -30,6 +34,11 @@ return (
 			Morning
 		</button>
 		<div>Your Select Menu:</div>
+		<div>
+		{selectedDishes.map((dish) => (
+			<div key={dish.value}>{dish.label}</div>
+			))}
+		</div>
 		</div>
 
 		<div style={{ flex: '1 1 20%' }}>
@@ -90,11 +99,16 @@ const RightPanel = ({ commentData }) => {
 
 
 const App = ()=> {
+
+	const count = useSelector((state) => state.count);
+
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
 			<header style={{ backgroundColor: 'lightgray', padding: '16px' }}>
 				<Header />
 			</header>
+
+			<div>Countコンポーネント:{count}</div>
 
 			<div style={{ display: 'flex', height: '100vh' }}>
 				<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
@@ -105,7 +119,6 @@ const App = ()=> {
 				</div>
 			</div>
 		</div>
-	
 	);
 }
 
