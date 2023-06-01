@@ -1,4 +1,4 @@
-const selectedDishesReducer = (state = [], action) => {
+const selectedDishesReducer_morning = (state = [], action) => {
     switch (action.type) {
       case 'UPDATE_SELECTED_DISHES':
         return action.payload;
@@ -7,4 +7,4 @@ const selectedDishesReducer = (state = [], action) => {
     }
   };
   
-  export default selectedDishesReducer;
+  export default selectedDishesReducer_morning;
