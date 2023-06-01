@@ -9,7 +9,7 @@ const WebGL = ({index}) => {
 		codeUrl: "unity/buildwebGL.wasm",
 	});
 
-	return <Unity unityProvider={unityProvider} style={{width:"100%",height:"70vh"}}/>;
+	return <Unity unityProvider={unityProvider} style={{width:"100%",height:"30vh"}}/>;
 }
 
 export default WebGL;

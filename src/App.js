@@ -78,10 +78,10 @@ return (
 const RightPanel = ({ commentData }) => {
 	return (
 		<div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
-			<div style={{ flex: '1 1 70%', border: '2px solid black' }}>
+			<div style={{ flex: '1 1 30%', border: '2px solid black' }}>
 				<WebGL />
 			</div>
-			<div style={{ flex: '1 1 30%', border: '2px solid black' }}>
+			<div style={{ flex: '1 1 70%', border: '2px solid black' }}>
 				<Comment/>
 			</div>
 		</div>
