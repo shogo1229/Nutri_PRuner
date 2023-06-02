@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { useSelector } from "react-redux";
 
 function WebGL({index}) {
 	const { unityProvider, sendMessage, addEventListener, removeEventListener } =
@@ -9,7 +10,20 @@ function WebGL({index}) {
 		frameworkUrl: "unity/build0602_webgl_3.framework.js",
 		codeUrl: "unity/build0602_webgl_3.wasm",
     });
-	function changeSize() {
+	
+	const s = useSelector((state)=>state.setToState)
+	const [state, setFlag] = useState(false)
+	const unityStyle = {
+		width:"100%",height:"70vh",visibility: state ? 'visible':'hidden'
+	}
+	console.log('aaaaa')
+	useEffect(() => {
+		if (s) {
+			sendMessage("1sou_right", "scenechange",2);
+		}
+	},[s]);
+
+	async function changeSize() {
 		let sou1_right = 1.0;
 		let sou1_left = 1.0;
 		let sou2 = 1.0;
@@ -56,42 +70,25 @@ function WebGL({index}) {
 			sou1_right = 0.5;
 		}
 		
-		//大きさ変更
+		//大きさ変更	
+		
+		
 		sendMessage("1sou_right", "transformKoma",sou1_right)
 		sendMessage("1sou_left", "transformKoma",sou1_left)
 		sendMessage("2sou", "transformKoma",sou2)
 		sendMessage("3sou", "transformKoma",sou3)
 		sendMessage("4sou", "transformKoma",sou4)
-		
-	}
-	function changeAnime() {
-		sendMessage("1sou_right", "scenechange",1)
-		// if(index[0] === 0 && index[1] === 0 && index[2] === 0 && index[3] === 0 && index[4] === 0){
-			
-		// 	sendMessage("1sou_right", "scenechange",1)
-		// }else{
-		// 	sendMessage("1sou_right", "scenechange",2)
-		// }
+		setFlag(() => true)
 	}
 
 	return (
-		<Fragment>
-			<Unity unityProvider={unityProvider} style={{width:"100%",height:"70vh"}}/>
-			<button onClick={changeSize}>size</button>
-			<button onClick={changeAnime}>anime</button>
-		</Fragment>
+		<>
+			<Unity unityProvider={unityProvider} style={unityStyle}/>
+			<div style = {{backgroundColor:'red'}}>
+				<button onClick={changeSize}>結果を見る</button>
+			</div>
+		</>
 	);
 }
 
 export default WebGL;
-// const WebGL = ({index}) => {  
-// 	return (
-// 		<>
-// 		<p>Fuck Web WebGL</p>
-// 		<h1>{index}</h1>
-// 		</>
-
-// 		);
-// 	};
-
-// export default WebGL;

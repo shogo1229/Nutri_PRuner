@@ -8,6 +8,8 @@ import { foodData } from './NutriDatabase';
 import { useDispatch } from 'react-redux';
 import { setToChatGPT } from './actions/setToChatGPT';
 import { setToWebGL } from './actions/setToWebGL';
+import { setToState } from './actions/setToState';
+
 import Header from './Header';
 import './index.css';
 import Modal from 'react-modal';
@@ -113,6 +115,8 @@ const App = () => {
 	  }
 	}
 
+	
+
 	toWebGUI = Object.values(deficiencies); // キーを抜いた数字のみの配列を作成
 
 	console.log('各栄養素合計値', sum); // 合計値をコンソールに出力
@@ -132,7 +136,8 @@ const App = () => {
   const [executeElements, setExecuteElements] = useState(false); // ボタンがクリックされたかどうかの状態
 
   const handleExecuteElements = () => {
-    setExecuteElements(true); // ボタンがクリックされたら状態を更新して要素を実行
+    setExecuteElements(() => true);
+	dispatch(setToState(true)); // ボタンがクリックされたら状態を更新して要素を実行
   };
 
 
@@ -239,7 +244,8 @@ const App = () => {
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
         <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
           <div style={{ flex: '1 1 70%', border: '2px solid black' }}>
-            {executeElements && <WebGL index={toWebGL} />}
+			<WebGL index={toWebGL}/>
+            {/* {executeElements && <WebGL index={toWebGL} />} */}
           </div>
           <div style={{ flex: '1 1 30%', border: '2px solid black' }}>
             {executeElements && <ChatGPT index={toChatGPT} />}
