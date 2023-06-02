@@ -4,13 +4,14 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 function WebGL() {
 	const { unityProvider, sendMessage, addEventListener, removeEventListener } =
     useUnityContext({
-		loaderUrl: "unity/build0602webgl.loader.js",
-		dataUrl: "unity/build0602webgl.data",
-		frameworkUrl: "unity/build0602webgl.framework.js",
-		codeUrl: "unity/build0602webgl.wasm",
+		loaderUrl: "unity/build0602_webgl_2.loader.js",
+		dataUrl: "unity/build0602_webgl_2.data",
+		frameworkUrl: "unity/build0602_webgl_2.framework.js",
+		codeUrl: "unity/build0602_webgl_2.wasm",
     });
 	function handleClick() {
-		sendMessage("3rd", "transformKoma", 2.0);
+		//sendMessage("3sou", "transformKoma", 0.5);
+		sendMessage("3sou", "scenechange",1)
 		// sendMessage("3rd", "transformKoma", 2.0);
 		// sendMessage("1st_left", "transformKoma", 2.0);
 		// sendMessage("2nd", "transformKoma", 2.0);
