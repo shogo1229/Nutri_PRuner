@@ -129,6 +129,12 @@ const App = () => {
 	dispatch(setToWebGL(toWebGUI));
   };
 
+  const [executeElements, setExecuteElements] = useState(false); // ボタンがクリックされたかどうかの状態
+
+  const handleExecuteElements = () => {
+    setExecuteElements(true); // ボタンがクリックされたら状態を更新して要素を実行
+  };
+
 
   const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
   const toWebGL = useSelector((state) => state.setTo_WebGL);
@@ -221,7 +227,8 @@ const App = () => {
 					...selectedDishes_snack
 				  ];
 				  setSelectedDishes(allSelectedDishes);
-				  handleCalcNutri(allSelectedDishes); // Call the function passing the selected dishes
+				  handleCalcNutri(allSelectedDishes); 
+				  handleExecuteElements();
 				}}
 			  >
 				Submit
@@ -230,19 +237,17 @@ const App = () => {
 		  </div>
 		</div>
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
-		  <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
-			<div style={{ flex: '1 1 70%', border: '2px solid black' }}>
-			  <WebGL index={toWebGL}/> 
-			  {/* <WebGL /> */}
-			</div>
-			<div style={{ flex: '1 1 30%', border: '2px solid black' }}>
-			  <ChatGPT index={toChatGPT}/> 
-			  {/* <ChatGPT /> */}
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
+        <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
+          <div style={{ flex: '1 1 70%', border: '2px solid black' }}>
+            {executeElements && <WebGL index={toWebGL} />}
+          </div>
+          <div style={{ flex: '1 1 30%', border: '2px solid black' }}>
+            {executeElements && <ChatGPT index={toChatGPT} />}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   );
 };
 
