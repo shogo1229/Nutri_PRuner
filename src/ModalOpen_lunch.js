@@ -37,11 +37,11 @@ const ModalOpen_lunch = ({ Menu, closeModalFn }) => {
             {options.map((dish_lunch) => (
 				<div
                 key={dish_lunch.value}
-                className={`w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
+                className={`px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full ${
 					selectedDishes_lunch.some(
                     (selected) => selected.value === dish_lunch.value
 					)
-                    ? "border-2 border-blue-500"
+                    ? 'bg-amber-200 transition-all duration-500 ease-out'
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_lunch(dish_lunch)}

@@ -18,12 +18,12 @@ const GallerySelect = ({ SelectMenu }) => {
 
 	return (
 	<div>
-		<h1>Your Select Menu is {SelectMenu}</h1>
+		<h1> Select {SelectMenu} Menu</h1>
 		<div className="flex flex-wrap justify-center">
 		{options.map((dish) => (
 			<div
 			key={dish.value}
-			className={`w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
+			className={`w-auto h-auto bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
 				selectedDishes.some((selected) => selected.value === dish.value)
 				? 'border-2 border-blue-500'
 				: ''

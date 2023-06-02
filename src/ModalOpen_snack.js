@@ -36,11 +36,11 @@ const ModalOpen_snack = ({ Menu, closeModalFn }) => {
             {options.map((dish_snack) => (
 				<div
                 key={dish_snack.value}
-                className={`w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
+                className={`px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full ${
 					selectedDishes_snack.some(
                     (selected) => selected.value === dish_snack.value
 					)
-                    ? "border-2 border-blue-500"
+                    ? 'bg-amber-200 transition-all duration-500 ease-out'
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_snack(dish_snack)}
