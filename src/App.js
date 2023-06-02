@@ -130,8 +130,8 @@ const App = () => {
   };
 
 
-  //const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
-  //const toWebGL = useSelector((state) => state.setTo_WebGL);
+  const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
+  const toWebGL = useSelector((state) => state.setTo_WebGL);
 
   return (
 	<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -232,12 +232,12 @@ const App = () => {
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
 		  <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
 			<div style={{ flex: '1 1 70%', border: '2px solid black' }}>
-			  {/* <WebGL index={toWebGL}/> */}
-			  <WebGL />
+			  <WebGL index={toWebGL}/> 
+			  {/* <WebGL /> */}
 			</div>
 			<div style={{ flex: '1 1 30%', border: '2px solid black' }}>
-			  {/* <ChatGPT index={toChatGPT}/> */}
-			  <ChatGPT />
+			  <ChatGPT index={toChatGPT}/> 
+			  {/* <ChatGPT /> */}
 			</div>
 		  </div>
 		</div>
