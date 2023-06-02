@@ -25,3 +25,4 @@ export const updateSelectedDishes_snack = (dishes) => {
       payload: dishes
     };
   };
+
