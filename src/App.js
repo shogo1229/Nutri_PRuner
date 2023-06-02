@@ -16,6 +16,10 @@ import Modal from 'react-modal';
 import { useSelector } from "react-redux";
 import CalcNutri from './CalcNutri';
 import ChatGPT from './ChatGPT';
+import morningimg from './img/toast.png'
+import lunchimg from './img/humberger.png'
+import dinnerimg from './img/dinner.png'
+import snackimg from './img/coffee.png'
 
 Modal.setAppElement('#root');
 
@@ -146,62 +150,63 @@ const App = () => {
 
   return (
 	<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-	  <header style={{ backgroundColor: 'lightgray', padding: '16px' }}>
+	  <header style={{ backgroundColor: '#F3F3F3', padding: '16px' }}>
 		<Header />
 	  </header>
 
-	  <div style={{ display: 'flex', height: '100vh' }}>
+	  <div style={{ display: 'flex', flexDirectin: 'column', height: '100vh' }}>
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
 		  <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
 			<div style={{ flex: '1 1 20%' }}>
 			  <button
-				className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
+				className="bg-[#37AB9D] hover:bg-emerald-400 transition-all w-96 duration-500 ease-out text-[#F3F3F3] rounded-full flex items-center px-4 py-2 font-bold text-64 mx-auto my-5"
 				onClick={handleOpenModal_morning}
 			  >
+				<img src={morningimg} alt="Morning" className="mr-0" />
 				Morning
 			  </button>
-			  <div>Your Select Menu:</div>
 			  {selectedDishes_morning.map((dish) => (
-				<div key={dish.value}>{dish.label}</div>
+				<div className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
+					key={dish.value}>{dish.label}</div>
 			  ))}
 			</div>
 
 			<div style={{ flex: '1 1 20%' }}>
 			  <button
-				className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
+				className="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-96 rounded-full flex items-center px-6 py-2 font-bold text-64 mx-auto my-5"
 				onClick={handleOpenModal_lunch}
 			  >
 				Lunch
 			  </button>
-			  <div>Your Select Menu:</div>
 			  {selectedDishes_lunch.map((dish) => (
-				<div key={dish.value}>{dish.label}</div>
+				<div  className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
+					key={dish.value}>{dish.label}</div>
 			  ))}
 			</div>
 
 			<div style={{ flex: '1 1 20%' }}>
 			  <button
-				className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
+				className="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-96 rounded-full flex items-center px-8 py-3 font-bold text-64 mx-auto my-5"
 				onClick={handleOpenModal_dinner}
 			  >
 				Dinner
 			  </button>
-			  <div>Your Select Menu:</div>
 			  {selectedDishes_dinner.map((dish) => (
-				<div key={dish.value}>{dish.label}</div>
+				<div className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1' 
+					key={dish.value}>{dish.label}</div>
 			  ))}
 			</div>
 
 			<div style={{ flex: '1 1 20%' }}>
 			  <button
-				className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
+				className="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-96 rounded-full flex items-center px-8 py-3 font-bold text-64 mx-auto my-5"
 				onClick={handleOpenModal_snack}
 			  >
 				Snack
 			  </button>
-			  <div>Your Select Menu:</div>
 			  {selectedDishes_snack.map((dish) => (
-				<div key={dish.value}>{dish.label}</div>
+				<div className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1' 
+					key={dish.value}>{dish.label}</div>
 			  ))}
 			</div>
 
@@ -221,9 +226,17 @@ const App = () => {
 			  <ModalOpen_snack Menu="snack" closeModalFn={handleCloseModal_snack} />
 			)}
 
+			<a href="#_" class="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-xl font-bold w-96 text-[#258F00] border-2 border-[#BDFFC4] rounded-full hover:text-white group hover:bg-gray-50">
+			<span class="absolute left-0 block w-96 h-0 transition-all bg-[#BDFFC4] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+			<span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+			</span>
+			<span class="relative">Submit</span>
+			</a>
+
 			<div style={{ flex: '1 1 20%' }}>
 			  <button
-				className="bg-green-700 hover:bg-green-600 text-white rounded px-4 py-2"
+				className="bg-[#BDFFC4] transition-all duration-500 ease-out hover:bg-emerald-400 text-[#258F00] rounded-full px-4 py-2 font-bold text-xl mx-auto"
 				onClick={() => {
 				  const allSelectedDishes = [
 					...selectedDishes_morning,

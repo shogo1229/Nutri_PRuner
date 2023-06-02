@@ -31,16 +31,15 @@ const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
         shouldCloseOnOverlayClick={true}
 		>
         <div>
-			<h1>Your Select Menu is {Menu}</h1>
 			<div className="flex flex-wrap justify-center">
             {options.map((dish_dinner) => (
 				<div
                 key={dish_dinner.value}
-                className={`w-32 h-32 bg-blue-200 m-2 flex items-center justify-center rounded-lg ${
+                className={`px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full ${
 					selectedDishes_dinner.some(
                     (selected) => selected.value === dish_dinner.value
 					)
-                    ? "border-2 border-blue-500"
+                    ? 'bg-amber-300 transition-all duration-500 ease-out'
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_dinner(dish_dinner)}

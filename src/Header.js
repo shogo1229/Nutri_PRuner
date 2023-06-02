@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {  
 	return (
-		<p>This is Header Area</p>
+		<p className='font-bold text-xl bg-[#F3F3F3] text-[#37AB9D]'>App Name</p>
 		);
 	};
 
