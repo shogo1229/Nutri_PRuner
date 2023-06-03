@@ -19,6 +19,8 @@ const ChatGPT = ({index}) => {
 		}
 	},[chatFlag]);
 
+	
+
 
 	// // メッセージの格納
 	// const handleMessageChange = ( event )  => {
