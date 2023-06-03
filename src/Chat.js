@@ -2,7 +2,10 @@ import axios from "axios";
 
 const API_URL = "https://api.openai.com/v1/";
 const MODEL = "gpt-3.5-turbo";
-const API_KEY = "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"
+const API_KEY = process.env.CHAT_KEY;
+
+//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
+//echo "CHAT_KEY=$CHAT_KEY" >> .env
 
 export const chat = async (message) => {
   console.log("Call2API",message)
