@@ -25,7 +25,7 @@ const ModalOpen_snack = ({ Menu, closeModalFn }) => {
 	return (
     <div className="App">
 		<Modal
-        className="modal fixed right-0 top-0 bottom-0 w-1/2 bg-white overflow-y-auto"
+        className="flex mx-auto my-20 h-5/6 w-3/4 bg-[#FFFFF] rounded-lg"
         isOpen={true}
         onRequestClose={closeModalFn}
         shouldCloseOnOverlayClick={true}

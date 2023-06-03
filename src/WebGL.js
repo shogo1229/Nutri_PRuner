@@ -81,36 +81,7 @@ function WebGL({index}) {
 			return (converted_plus_value)
 		}
 
-
 	}
-
-	// const changeSize = () => {
-	// 	const sou1_right = compareValues(index[3])
-	// 	const sou1_left = compareValues(index[4])
-	// 	const sou2 = compareValues(index[2])
-	// 	const sou3 = compareValues(index[1])
-	// 	const sou4 = compareValues(index[0])
-
-	// 	//大きさを変更		
-	// 	sendMessage("1sou_right", "transformKoma",sou1_right)
-	// 	sendMessage("1sou_left", "transformKoma",sou1_left)
-	// 	sendMessage("2sou", "transformKoma",sou2)
-	// 	sendMessage("3sou", "transformKoma",sou3)
-	// 	sendMessage("4sou", "transformKoma",sou4)
-	// 	setFlag(() => true)
-	// }
-
-	// const compareValues = (value) => {
-	// 	var sou;
-	// 	if(value > 0){
-	// 		sou = 2;
-	// 	}else if(value == 0){
-	// 		sou = 1.0;
-	// 	}else{
-	// 		sou = 0.5;
-	// 	}
-	// 	return sou
-	// }
 
 	return (
 		<>
@@ -119,7 +90,7 @@ function WebGL({index}) {
 				<div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} className="unity">
 					<a href="#_" className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-white group" style={{visibility: buttonState ? 'visible':'hidden'}}>
 						<span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"></span>
-						<button className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600"
+						<button className="relative w-full text-left font-bold text-32 text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600"
 							onClick={()=>{
 							setButtonFlag(()=>false);
 							changeSize();

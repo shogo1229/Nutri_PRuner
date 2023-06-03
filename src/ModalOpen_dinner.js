@@ -25,13 +25,13 @@ const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
 	return (
     <div className="App">
 		<Modal
-        className="modal fixed right-0 top-0 bottom-0 w-1/2 bg-white overflow-y-auto"
+        className="flex mx-auto my-20 h-5/6 w-3/4 bg-[#FFFFF] rounded-lg"
         isOpen={true}
         onRequestClose={closeModalFn}
         shouldCloseOnOverlayClick={true}
 		>
         <div>
-			<div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center">
             {options.map((dish_dinner) => (
 				<div
                 key={dish_dinner.value}
@@ -39,10 +39,15 @@ const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
 					selectedDishes_dinner.some(
                     (selected) => selected.value === dish_dinner.value
 					)
-                    ? 'bg-[#BDFFC4] transition-all duration-500 ease-out'
+                    ? 'bg-amber-300 transition-all duration-500 ease-out'
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_dinner(dish_dinner)}
+                style={{
+                  backgroundColor: selectedDishes_dinner.some((selected) => selected.value === dish_dinner.value)
+                    ? '#FDE68A'
+                    : ''
+                }}
 				>
                 {dish_dinner.label}
 				</div>
