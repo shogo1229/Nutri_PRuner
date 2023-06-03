@@ -5,6 +5,7 @@ module.exports = {
     extend: {fontSize: {
       '64': '64px',
       '32': '32px',
+      '92': '92px',
     },},
   },
   plugins: [],

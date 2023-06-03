@@ -217,44 +217,47 @@ const App = () => {
 						<button
 							className={ButtonClassStyle}
 							onClick={handleOpenModal_morning}
+							style={{ width: '60%', height: '60%' }}
 						>
 							<img src={morningimg} alt="Morning" className="mr-0 w-10" />
 							<p className = 'm-auto'>Morning</p>
 						</button>
-					{selectedDishes_morning.map((dish) => (
+					{/* {selectedDishes_morning.map((dish) => (
 						<div className={elementDishes}
 							key={dish.value}>{dish.label}
 						</div>
-					))}
+					))} */}
 					</div>
 						<div style={{ flex: '1 1 20%' }}>
 							<button
 								className={ButtonClassStyle}
 								onClick={handleOpenModal_lunch}
+								style={{ width: '60%', height: '60%' }}
 							>
 							<img src={lunchimg} alt="Lunch" className="mr-0 w-10" />
 							<p className = 'm-auto'>Lunch</p>
 							</button>
-						{selectedDishes_lunch.map((dish) => (
+						{/* {selectedDishes_lunch.map((dish) => (
 						<div  className={elementDishes}
 							key={dish.value}>{dish.label}
 						</div>
-						))}
+						))} */}
 						</div>
 						<div style={{ flex: '1 1 20%' }}>
 							<button
 								className={ButtonClassStyle}
 								onClick={handleOpenModal_dinner}
+								style={{ width: '60%', height: '60%' }}
 							>
 							<img src={dinnerimg} alt="dinner" className="mr-0 w-10" />
 							<p className = 'm-auto'>Dinner</p>
 							</button>
 							
-						{selectedDishes_dinner.map((dish) => (
+						{/* {selectedDishes_dinner.map((dish) => (
 						<div className={elementDishes}
 							key={dish.value}>{dish.label}
 						</div>
-						))}
+						))} */}
 						</div>
 
 						
@@ -262,14 +265,15 @@ const App = () => {
 							<button
 								className={ButtonClassStyle}
 								onClick={handleOpenModal_snack}
+								style={{ width: '60%', height: '60%' }}
 							>
 							<img src={snackimg} alt="Snack" className="mr-0 w-10" />
 							<p className = 'm-auto'>Snack</p>
 							</button>
-						{selectedDishes_snack.map((dish) => (
+						{/* {selectedDishes_snack.map((dish) => (
 						<div className={elementDishes}
 							key={dish.value}>{dish.label}</div>
-						))}
+						))} */}
 						</div>
 
 						<div>
@@ -291,7 +295,7 @@ const App = () => {
 					{isModalOpen_snack && (
 						<ModalOpen_snack Menu="snack" closeModalFn={handleCloseModal_snack} />
 					)}
-			<a href="#_" class="relative inline-flex items-center px-12 py-3 mb-4 mx-auto overflow-hidden text-xl font-xl font-bold w-48 text-[#258F00] border-2 border-[#BDFFC4] rounded-full hover:text-[#258F00] group hover:bg-gray-50" 
+			<a href="#_" class="relative inline-flex items-center px-12 py-3 mb-4 mx-auto overflow-hidden text-32 font-32 font-bold w-64 text-[#258F00] border-8 border-[#BDFFC4] rounded-full hover:text-[#258F00] group hover:bg-gray-50" 
 					onClick={() => {
 					const allSelectedDishes = [
 						...selectedDishes_morning,
@@ -305,7 +309,7 @@ const App = () => {
 				}}>
 					<span class="absolute left-0 block w-48 h-0 transition-all bg-[#BDFFC4] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
 					<span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
 					</span>
 					<button class="relative">Submit</button>
 			</a>
