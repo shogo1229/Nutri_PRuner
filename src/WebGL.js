@@ -18,13 +18,11 @@ function WebGL({index}) {
 		width:"100%",height:"70vh",visibility: state ? 'visible':'hidden'
 	}
 
-	let org_index = index.slice()
-	console.log("bef",org_index)
 
 	index.forEach(function (value, id) {
 		index[id]=Math.abs(index[id])
 	});
-	console.log("aft",org_index)
+
 	let sum = index.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
 	
@@ -47,11 +45,11 @@ function WebGL({index}) {
 	},[loadFlag]);
 
 	const changeSize = () => {
-		const sou1_right = compareValues(org_index[3])
-		const sou1_left = compareValues(org_index[4])
-		const sou2 = compareValues(org_index[2])
-		const sou3 = compareValues(org_index[1])
-		const sou4 = compareValues(org_index[0])
+		const sou1_right = compareValues(index[3],2)
+		const sou1_left = compareValues(index[4],2)
+		const sou2 = compareValues(index[2],4)
+		const sou3 = compareValues(index[1],5.5)
+		const sou4 = compareValues(index[0],6)
 
 		//大きさを変更		
 		sendMessage("1sou_right", "transformKoma",sou1_right)
@@ -62,26 +60,9 @@ function WebGL({index}) {
 		setFlag(() => true)
 	}
 
-	const compareValues = (value) => {
-		if (value===0){
-			console.log("just")
-			return 1
-		}
-
-		else if(value<0){
-			let normalized_minus_value = Math.abs(value)/(Math.abs(value)+1)
-			let converted_minus_value = 0.4 + normalized_minus_value *0.6
-			console.log("WebGL_Plus",value,converted_minus_value)
-			return (converted_minus_value)
-		}
-		else if(value>0){
-			let normalized_plus_value = value/(value+0.6)
-			let converted_plus_value = 0.6 + normalized_plus_value 
-			console.log("WebGL_Minus",value,converted_plus_value)
-			return (converted_plus_value)
-		}
-
-
+	const compareValues = (value,origin) => {
+		console.log(0.5+(value/origin)*2)
+		return (0.5+(value/origin)*2)
 	}
 
 	// const changeSize = () => {
@@ -119,7 +100,7 @@ function WebGL({index}) {
 				<div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} className="unity">
 					<a href="#_" className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-white group" style={{visibility: buttonState ? 'visible':'hidden'}}>
 						<span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"></span>
-						<button className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600"
+						<button className="relative w-full text-left font-bold text-32 text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600"
 							onClick={()=>{
 							setButtonFlag(()=>false);
 							changeSize();

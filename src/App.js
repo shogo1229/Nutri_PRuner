@@ -169,8 +169,8 @@ const App = () => {
 	};
 	const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
 	const toWebGL = useSelector((state) => state.setTo_WebGL);
-	const ButtonClassStyle ="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-56 rounded-full flex items-center px-6 py-2 font-bold text-8 mx-auto my-5"
-	const elementDishes = 'bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
+	const ButtonClassStyle ="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-full flex items-center px-6 py-2 font-bold text-32 mx-auto my-5"
+	const elementDishes = 'bg-amber-200 text-[#374151] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
 	
 	return (
 		<>
@@ -291,14 +291,8 @@ const App = () => {
 					{isModalOpen_snack && (
 						<ModalOpen_snack Menu="snack" closeModalFn={handleCloseModal_snack} />
 					)}
-			<a href="#_" class="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-xl font-bold w-48 text-[#258F00] border-2 border-[#BDFFC4] rounded-full hover:text-[#258F00] group hover:bg-gray-50">
-			<span class="absolute left-0 block w-48 h-0 transition-all bg-[#BDFFC4] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-			<span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-			</span>
-			<button 
-				class="relative"
-				onClick={() => {
+			<a href="#_" class="relative inline-flex items-center px-12 py-3 mb-4 mx-auto overflow-hidden text-xl font-xl font-bold w-48 text-[#258F00] border-2 border-[#BDFFC4] rounded-full hover:text-[#258F00] group hover:bg-gray-50" 
+					onClick={() => {
 					const allSelectedDishes = [
 						...selectedDishes_morning,
 						...selectedDishes_lunch,
@@ -308,8 +302,12 @@ const App = () => {
 					setSelectedDishes(allSelectedDishes);
 					handleCalcNutri(allSelectedDishes); 
 					handleExecuteElements();
-					}}
-			>Submit</button>
+				}}>
+					<span class="absolute left-0 block w-48 h-0 transition-all bg-[#BDFFC4] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+					<span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+					</span>
+					<button class="relative">Submit</button>
 			</a>
 			</div>
 			</div>
@@ -318,9 +316,9 @@ const App = () => {
 				<div style={{ flex: '1 1 70%'}}>
 					<WebGL index={toWebGL}/>
 				</div>
-				<div style={{ flex: '1 1 30%', border: '2px solid black', overflow: 'auto' }}>
+				<div style={{ flex: '1 1 30%', border: '8px solid #37AB9D', borderRadius: '15px', overflow: 'auto' }}>
 					{executeElements && 
-						<h2>その食事メニューでは{toChatGPT}が不足しています！<br/>その食事メニューに以下の料理を加えてみてはいかがですか？</h2>
+						<h2 className='mt-3 mx-3 font-bold'>その食事メニューでは{toChatGPT}が不足しています！<br/>その食事メニューに以下の料理を加えてみてはいかがですか？</h2>
 						
 					}
 					{executeElements && <ChatGPT index={toChatGPT} />}

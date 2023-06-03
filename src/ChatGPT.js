@@ -24,10 +24,10 @@ const ChatGPT = ({index}) => {
 
 	return (
 		<div className="overflow-y-auto">
-			<h1>AIからのご提案</h1>
+			<h1 className='mx-3 font-bold'>AIからのご提案</h1>
 				{ answer && (
 		<div>
-		<p>{ answer.split( /\n/ ).map( ( item, index ) => {
+		<p className='mx-3 font-bold'>{ answer.split( /\n/ ).map( ( item, index ) => {
             return (
 				<React.Fragment key={ index }>
 					{ item }

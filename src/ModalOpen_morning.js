@@ -43,6 +43,11 @@ const ModalOpen_morning = ({ Menu, closeModalFn }) => {
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_morning(dish_morning)}
+                style={{
+                  backgroundColor: selectedDishes_morning.some((selected) => selected.value === dish_morning.value)
+                    ? '#FDE68A'
+                    : ''
+                }}
 				>
                 {dish_morning.label}
 				</div>
