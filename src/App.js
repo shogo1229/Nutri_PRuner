@@ -92,7 +92,7 @@ const App = () => {
 		let ClassList = ['主食', '副菜', '主菜', '乳製品', '果物'];
 
 		let toChatGPT = [];
-		let toWebGUI = [];
+		let toWebGL = [];
 
 		dishlist.forEach((id) => {
 			const item = foodData[id.value - 1];
@@ -120,20 +120,21 @@ const App = () => {
 
 	
 
-		toWebGUI = Object.values(deficiencies); // キーを抜いた数字のみの配列を作成
+		toWebGL = Object.values(deficiencies); // キーを抜いた数字のみの配列を作成
 
 		console.log('各栄養素合計値', sum); // 合計値をコンソールに出力
-		console.log('WebGUIに渡す用の配列', toWebGUI);
+		
 
 		for (const cls in ClassList) {
-			if (toWebGUI[cls] < 0) {
+			if (toWebGL[cls] < 0) {
 			toChatGPT.push(ClassList[cls]);
 			}
 		}
 
 		console.log('ChatGPTAPIに渡す用の配列', toChatGPT);
 		dispatch(setToChatGPT(toChatGPT));
-		dispatch(setToWebGL(toWebGUI));
+		console.log('WebGUIに渡す用の配列', toWebGL);
+		dispatch(setToWebGL(toWebGL));
 	};
 
   	const [executeElements, setExecuteElements] = useState(false); // ボタンがクリックされたかどうかの状態
@@ -213,6 +214,10 @@ const App = () => {
 						<div className={elementDishes}
 							key={dish.value}>{dish.label}</div>
 						))}
+						</div>
+
+						<div>
+
 						</div>
 
 					{isModalOpen_morning && (
