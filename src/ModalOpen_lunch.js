@@ -31,7 +31,7 @@ const ModalOpen_lunch = ({ Menu, closeModalFn }) => {
         onRequestClose={closeModalFn}
         shouldCloseOnOverlayClick={true}
 		>
-        <div>
+       
 			<div className="flex flex-wrap justify-center">
             {options.map((dish_lunch) => (
 				<div
@@ -49,7 +49,6 @@ const ModalOpen_lunch = ({ Menu, closeModalFn }) => {
 				</div>
             ))}
 			</div>
-        </div>
 		</Modal>
     </div>
 	);
