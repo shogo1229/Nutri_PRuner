@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = "https://api.openai.com/v1/";
 const MODEL = "gpt-3.5-turbo";
-const API_KEY = process.env.CHAT_KEY;
+const API_KEY = process.env.REACT_APP_CHAT;
 
 export const chat = async (message) => {
   console.log("Call2API",message)
