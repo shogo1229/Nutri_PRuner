@@ -32,7 +32,7 @@ const ModalOpen_lunch = ({ Menu, closeModalFn }) => {
         shouldCloseOnOverlayClick={true}
 		>
        
-			<div className="flex flex-wrap justify-center">
+       <div className="flex flex-wrap justify-center">
             {options.map((dish_lunch) => (
 				<div
                 key={dish_lunch.value}
@@ -44,6 +44,11 @@ const ModalOpen_lunch = ({ Menu, closeModalFn }) => {
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_lunch(dish_lunch)}
+                style={{
+                  backgroundColor: selectedDishes_lunch.some((selected) => selected.value === dish_lunch.value)
+                    ? '#FDE68A'
+                    : ''
+                }}
 				>
                 {dish_lunch.label}
 				</div>
