@@ -1,9 +1,10 @@
 import WebGL from './WebGL';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import ModalOpen_morning from './ModalOpen_morning';
 import ModalOpen_lunch from './ModalOpen_lunch';
 import ModalOpen_dinner from './ModalOpen_dinner';
 import ModalOpen_snack from './ModalOpen_snack';
+import ModalOpen_First from './ModalOpen_First';
 import { foodData } from './NutriDatabase';
 import { useDispatch } from 'react-redux';
 import { setToChatGPT } from './actions/setToChatGPT';
@@ -19,6 +20,7 @@ import morningimg from './img/toast.png'
 import lunchimg from './img/humberger.png'
 import dinnerimg from './img/dinner.png'
 import snackimg from './img/coffee.png'
+import UnityNormalGIF from './img/UnityRun_Normal.gif'
 
 Modal.setAppElement('#root');
 
@@ -57,7 +59,7 @@ const App = () => {
 		setIsModalOpen_dinner(false);
 	};
 
-	const [isModalOpen_snack, setIsModalOpen_snack] = useState(false);
+	const [isModalOpen_snack, setIsModalOpen_snack] = useState();
 	const selectedDishes_snack = useSelector((state) => state.selectedDishes_snack);
 
 	const handleOpenModal_snack = () => {
@@ -144,16 +146,58 @@ const App = () => {
 		dispatch(setToState(true)); // ボタンがクリックされたら状態を更新して要素を実行
 	};
 
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	useEffect(() => {
+	  setIsModalOpen(true); // ページがロードされた後にモーダルを表示
+	}, []);
+  
+	const closeModalFn = () => {
+	  setIsModalOpen(false);
+	};
 	const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
 	const toWebGL = useSelector((state) => state.setTo_WebGL);
 	const ButtonClassStyle ="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-56 rounded-full flex items-center px-6 py-2 font-bold text-8 mx-auto my-5"
 	const elementDishes = 'bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
+	
 	return (
+		<>
+		<div style={{display: 'flex'}}>
+			{isModalOpen && (
+				<Modal
+					className="flex mx-auto my-20 h-5/6 w-3/4 bg-[#FFFFF] rounded-lg"
+					isOpen={true}
+					onRequestClose={closeModalFn}
+					shouldCloseOnOverlayClick={true}
+				>
+				<div style={{ display: 'flex', width:'100%',flexDirection: 'row' }}>
+					<div style={{ flex: '1' ,width:'50%'}}>
+						<img src={UnityNormalGIF} style={{ width: '100%' }}></img>
+					</div>
+					<div style={{ flex: '1', overflow: 'auto' ,width:'50%'}}>
+						<h1>Nutri PRuner</h1>
+						<h1>概要</h1>
+						<h1>食事バランスきっちり取れてますか？？？</h1>
+						<h1>ハッカソン中は特に3食インスタント食品にエナジードリンクのような限界生活をしていませんか！？</h1>
+						<h1>食事メニューを選択してUnityちゃんをコマの上で走らせよう！！！</h1>
+						<h1>説明</h1>
+						<h1>あなたには朝ごはん、昼ごはん、晩ごはん、間食に何を食べたかを選択してもらいます！</h1>
+						<h1>もしちゃんとバランスが取れた食事を遅れていればUnityちゃんがコマの上で元気に走ってくれます！</h1>
+						<h1>でも食事バランスが悪いとコマのバランスが悪くなってUnityちゃんが落ちちゃいます！</h1>
+						<h1>バランスが悪いとコマのサイズが変化します！上から順番に主食・主菜・副菜・果物・乳製品を表しています！</h1>
+						<h1>バランスを考えた食事を取って限界食生活を改善しよう！！！！</h1>
+					</div>
+				</div>
+				</Modal>
+			)}
+			</div>
+
 		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+			
 			<header style={{ backgroundColor: '#F3F3F3', padding: '16px' }}>
 				<Header />
 			</header>
-
+		
 		<div style={{ display: 'flex', flexDirectin: 'column', height: '100vh' }}>
 			<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
 				<div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
@@ -273,6 +317,7 @@ const App = () => {
 		</div>
     </div>
 </div>
+</>
 );
 };
 
