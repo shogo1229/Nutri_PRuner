@@ -39,7 +39,7 @@ const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
 					selectedDishes_dinner.some(
                     (selected) => selected.value === dish_dinner.value
 					)
-                    ? 'bg-amber-300 transition-all duration-500 ease-out'
+                    ? 'bg-[#BDFFC4] transition-all duration-500 ease-out'
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_dinner(dish_dinner)}

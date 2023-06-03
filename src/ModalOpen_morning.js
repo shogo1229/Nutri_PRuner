@@ -31,23 +31,27 @@ const ModalOpen_morning = ({ Menu, closeModalFn }) => {
         shouldCloseOnOverlayClick={true}
 		>
         <div>
-			<div className="flex flex-wrap justify-center">
-            {options.map((dish_morning) => (
-				<div
-                key={dish_morning.value}
-                className={`px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full ${
-					selectedDishes_morning.some(
-                    (selected) => selected.value === dish_morning.value
-					)
-                    ? 'bg-amber-300 transition-all duration-500 ease-out'
-                    : ""
-                }`}
-                onClick={() => toggleDishSelection_morning(dish_morning)}
-				>
-                {dish_morning.label}
-				</div>
-            ))}
-			</div>
+        <div className="flex flex-wrap justify-center">
+  {options.map((dish_morning) => (
+    <span
+      key={dish_morning.value}
+      className={`px-4 py-2 bg-gray-200 m-2 flex font-bold items-center justify-center rounded-full ${
+        selectedDishes_morning.some((selected) => selected.value === dish_morning.value)
+          ? 'bg-amber-200 transition-all duration-500 ease-out'
+          : ''
+      }`}
+      onClick={() => toggleDishSelection_morning(dish_morning)}
+      style={{
+        backgroundColor: selectedDishes_morning.some((selected) => selected.value === dish_morning.value)
+          ? '#FDE68A'
+          : ''
+      }}
+    >
+      {dish_morning.label}
+    </span>
+  ))}
+</div>
+
         </div>
 		</Modal>
     </div>
