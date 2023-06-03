@@ -14,7 +14,6 @@ import Header from './Header';
 import './index.css';
 import Modal from 'react-modal';
 import { useSelector } from "react-redux";
-import CalcNutri from './CalcNutri';
 import ChatGPT from './ChatGPT';
 import morningimg from './img/toast.png'
 import lunchimg from './img/humberger.png'
@@ -146,7 +145,8 @@ const App = () => {
 
 	const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
 	const toWebGL = useSelector((state) => state.setTo_WebGL);
-
+	const ButtonClassStyle ="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-56 rounded-full flex items-center px-6 py-2 font-bold text-8 mx-auto my-5"
+	const elementDishes = 'bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
 			<header style={{ backgroundColor: '#F3F3F3', padding: '16px' }}>
@@ -158,40 +158,43 @@ const App = () => {
 				<div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
 					<div style={{ flex: '1 1 20%' }}>
 						<button
-							className="bg-[#37AB9D] hover:bg-emerald-400 transition-all w-96 duration-500 ease-out text-[#F3F3F3] rounded-full flex items-center px-4 py-2 font-bold text-64 mx-auto my-5"
+							className={ButtonClassStyle}
 							onClick={handleOpenModal_morning}
 						>
-							<img src={morningimg} alt="Morning" className="mr-0" />
-							Morning
+							<img src={morningimg} alt="Morning" className="mr-0 w-10" />
+							<p className = 'm-auto'>Morning</p>
 						</button>
 					{selectedDishes_morning.map((dish) => (
-						<div className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
+						<div className={elementDishes}
 							key={dish.value}>{dish.label}
 						</div>
 					))}
 					</div>
 						<div style={{ flex: '1 1 20%' }}>
 							<button
-								className="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-96 rounded-full flex items-center px-6 py-2 font-bold text-64 mx-auto my-5"
+								className={ButtonClassStyle}
 								onClick={handleOpenModal_lunch}
 							>
-							Lunch
+							<img src={lunchimg} alt="Lunch" className="mr-0 w-10" />
+							<p className = 'm-auto'>Lunch</p>
 							</button>
 						{selectedDishes_lunch.map((dish) => (
-						<div  className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
+						<div  className={elementDishes}
 							key={dish.value}>{dish.label}
 						</div>
 						))}
 						</div>
 						<div style={{ flex: '1 1 20%' }}>
 							<button
-							className="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-96 rounded-full flex items-center px-8 py-3 font-bold text-64 mx-auto my-5"
-							onClick={handleOpenModal_dinner}
+								className={ButtonClassStyle}
+								onClick={handleOpenModal_dinner}
 							>
-							Dinner
+							<img src={dinnerimg} alt="dinner" className="mr-0 w-10" />
+							<p className = 'm-auto'>Dinner</p>
 							</button>
+							
 						{selectedDishes_dinner.map((dish) => (
-						<div className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1' 
+						<div className={elementDishes}
 							key={dish.value}>{dish.label}
 						</div>
 						))}
@@ -200,13 +203,14 @@ const App = () => {
 						
 						<div style={{ flex: '1 1 20%' }}>
 							<button
-								className="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-96 rounded-full flex items-center px-8 py-3 font-bold text-64 mx-auto my-5"
+								className={ButtonClassStyle}
 								onClick={handleOpenModal_snack}
 							>
-							Snack
+							<img src={snackimg} alt="Snack" className="mr-0 w-10" />
+							<p className = 'm-auto'>Snack</p>
 							</button>
 						{selectedDishes_snack.map((dish) => (
-						<div className='bg-[#37AB9D] text-[#F3F3F3] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1' 
+						<div className={elementDishes}
 							key={dish.value}>{dish.label}</div>
 						))}
 						</div>
@@ -226,30 +230,31 @@ const App = () => {
 					{isModalOpen_snack && (
 						<ModalOpen_snack Menu="snack" closeModalFn={handleCloseModal_snack} />
 					)}
-
-					<div style={{ flex: '1 1 20%' }}>
-						<button
-							className="bg-[#BDFFC4] transition-all duration-500 ease-out hover:bg-emerald-400 text-[#258F00] rounded-full px-4 py-2 font-bold text-xl mx-auto"
-							onClick={() => {
-								const allSelectedDishes = [
-									...selectedDishes_morning,
-									...selectedDishes_lunch,
-									...selectedDishes_dinner,
-									...selectedDishes_snack
-								];
-							setSelectedDishes(allSelectedDishes);
-							handleCalcNutri(allSelectedDishes); 
-							handleExecuteElements();
-							}}
-							>
-							Submit
-						</button>
-					</div>
-				</div>
+			<a href="#_" class="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-xl font-bold w-48 text-[#258F00] border-2 border-[#BDFFC4] rounded-full hover:text-[#258F00] group hover:bg-gray-50">
+			<span class="absolute left-0 block w-48 h-0 transition-all bg-[#BDFFC4] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+			<span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+			</span>
+			<button 
+				class="relative"
+				onClick={() => {
+					const allSelectedDishes = [
+						...selectedDishes_morning,
+						...selectedDishes_lunch,
+						...selectedDishes_dinner,
+						...selectedDishes_snack
+					];
+					setSelectedDishes(allSelectedDishes);
+					handleCalcNutri(allSelectedDishes); 
+					handleExecuteElements();
+					}}
+			>Submit</button>
+			</a>
+			</div>
 			</div>
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
 			<div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
-				<div style={{ flex: '1 1 70%', border: '2px solid black' }}>
+				<div style={{ flex: '1 1 70%'}}>
 					<WebGL index={toWebGL}/>
 				</div>
 				<div style={{ flex: '1 1 30%', border: '2px solid black', overflow: 'auto' }}>

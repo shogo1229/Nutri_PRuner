@@ -12,6 +12,7 @@ function WebGL({index}) {
     });
 	
 	const [state, setFlag] = useState(false)
+	const [buttonState, setButtonFlag] = useState(true)
 	const loadFlag = useSelector((state)=>state.setToState)
 	const unityStyle = {
 		width:"100%",height:"70vh",visibility: state ? 'visible':'hidden'
@@ -94,9 +95,20 @@ function WebGL({index}) {
 
 	return (
 		<>
-			<Unity unityProvider={unityProvider} style={unityStyle}/>
-			<div style = {{backgroundColor:'red'}}>
-				<button onClick={changeSize}>結果を見る</button>
+		<div style={{ position: 'relative' }}>
+			<Unity unityProvider={unityProvider} style={unityStyle} />
+				<div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} className="unity">
+					<a href="#_" className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-white group" style={{visibility: buttonState ? 'visible':'hidden'}}>
+						<span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"></span>
+						<button className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600"
+							onClick={()=>{
+							setButtonFlag(()=>false);
+							changeSize();
+							}}>
+							Result
+						</button>
+					</a>
+				</div>
 			</div>
 		</>
 	);

@@ -31,7 +31,6 @@ const ModalOpen_snack = ({ Menu, closeModalFn }) => {
         shouldCloseOnOverlayClick={true}
 		>
         <div>
-			<h1>Your Select Menu is {Menu}</h1>
 			<div className="flex flex-wrap justify-center">
             {options.map((dish_snack) => (
 				<div
@@ -40,7 +39,7 @@ const ModalOpen_snack = ({ Menu, closeModalFn }) => {
 					selectedDishes_snack.some(
                     (selected) => selected.value === dish_snack.value
 					)
-                    ? 'bg-amber-300 transition-all duration-500 ease-out'
+                    ? 'bg-amber-200 transition-all duration-500 ease-out'
                     : ""
                 }`}
                 onClick={() => toggleDishSelection_snack(dish_snack)}
