@@ -369,9 +369,9 @@ const App = () => {
 					{(toChatGPT.length > 0) && 
 						<ChatGPT index={toChatGPT} />
 						}
-
+					
 					{(toChatGPT.length === 0 ) && 
-						<h2 className='mt-3 mx-3 font-bold'>完璧な栄養バランスです！</h2>
+						<h2 className='mt-3 mx-3 font-bold'>不足ではありませんが、もしかして食べすぎてませんか？<br/>コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！</h2>
 					}
 					</>
 				}
