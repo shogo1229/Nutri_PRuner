@@ -177,7 +177,7 @@ const App = () => {
 		<div style={{display: 'flex'}}>
 			{isModalOpen && (
 				<Modal
-					className="flex mx-auto my-20 h-5/6 w-3/4 bg-[#FFFFF] rounded-lg"
+					className="flex mx-auto my-20 h-5/6 w-3/4 bg-white bg-opacity-100 rounded-xl border-solid border-[#37AB9D] border-8"
 					isOpen={true}
 					onRequestClose={closeModalFn}
 					shouldCloseOnOverlayClick={true}
@@ -223,6 +223,13 @@ const App = () => {
 								<h1>でも食事バランスが悪いとコマのバランスが悪くなってUnityちゃんが落ちちゃいます！</h1>
 								<h1>バランスが悪いとコマのサイズが変化します！上から順番に主食・主菜・副菜・果物・乳製品を表しています！</h1>
 								<h1>バランスを考えた食事を取って限界食生活を改善しよう！！！！</h1>
+								</div>
+								<div className="my-5 bg-amber-200 rounded-xl px-3 py-3 mx-3">
+								<h1 className="text-24">操作方法</h1>
+								<h1>まず初めに書く食事時に食べた料理を選択！</h1>
+								<h1>次に左下のSubmitボタンを押してデータを提出！</h1>
+								<h1>最後に右上のresultボタンを押せばUnityちゃんが走れてるか表示されます！</h1>
+
 								</div>
 							</div>
 						</div>
@@ -345,16 +352,17 @@ const App = () => {
 			</div>
 		<div style={{ flex: '1', width: '50%', overflow: 'auto' }}>
 			<div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
-				<div style={{ flex: '1 1 70%'}}>
+				<div style={{ flex: '1 1 60%'}}>
 					<WebGL index={toWebGL}/>
 				</div>
-				<div style={{ flex: '1 1 30%', border: '8px solid #37AB9D', borderRadius: '15px', overflow: 'auto' }}>
+				<div style={{ flex: '1 1 40%', border: '8px solid #37AB9D', borderRadius: '15px', overflow: 'auto' }}>
 					{executeElements && 
 						<h2 className='mt-3 mx-3 font-bold'>その食事メニューでは{toChatGPT}が不足しています！<br/>その食事メニューに以下の料理を加えてみてはいかがですか？</h2>
 						
 					}
 					{executeElements && <ChatGPT index={toChatGPT} />}
 				</div>
+				<div style={{ flex: '1 1 5%' ,overflow: 'auto' }}></div>
 			</div>	
 		</div>
     </div>
