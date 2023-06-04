@@ -173,6 +173,7 @@ const App = () => {
 	const ButtonClassStyle ="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-full flex items-center px-6 py-2 font-bold text-32 mx-auto my-5"
 	const elementDishes = 'bg-amber-200 text-[#374151] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
 	
+	
 	console.log("tochatGPT length",toChatGPT.length )
 	return (
 		<>
@@ -371,7 +372,7 @@ const App = () => {
 						}
 					
 					{(toChatGPT.length === 0 ) && 
-						<h2 className='mt-3 mx-3 font-bold'>不足ではありませんが、もしかして食べすぎてませんか？<br/>コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！</h2>
+						<h2 className='mt-3 mx-3 font-bold'>不足ではありませんが、もしかして食べすぎてませんか？<></>コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！</h2>
 					}
 					</>
 				}

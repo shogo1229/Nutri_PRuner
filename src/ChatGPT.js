@@ -24,7 +24,7 @@ const ChatGPT = ({index}) => {
 
 	return (
 		<div className="overflow-y-auto">
-			<h1 class='mx-3 font-bold border-b-4 border-indigo-500'>ChatGPTからのご提案</h1>
+			<h1 class='mx-3 font-bold border-b-4 border-indigo-500'>ChatGPTからのご提案　:　読み込み非常に時間がかかる場合がございます、コマの回転を眺めながらお待ちください</h1>
 				{ answer && (
 		<div>
 		<p className='mx-3 font-bold'>{ answer.split( /\n/ ).map( ( item, index ) => {
