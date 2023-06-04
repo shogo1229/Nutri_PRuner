@@ -88,9 +88,9 @@ function WebGL({index}) {
 		<div style={{ position: 'relative' }}>
 			<Unity unityProvider={unityProvider} style={unityStyle} />
 				<div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} className="unity">
-					<a href="#_" className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-white group" style={{visibility: buttonState ? 'visible':'hidden'}}>
+					<a href="#_" className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-[#37AB9D] rounded-full hover:bg-white group" style={{visibility: buttonState ? 'visible':'hidden'}}>
 						<span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"></span>
-						<button className="relative w-full text-left font-bold text-32 text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600"
+						<button className="relative w-full text-left font-bold text-32 text-white transition-colors duration-200 ease-in-out group-hover:text-[#37AB9D]"
 							onClick={()=>{
 							setButtonFlag(()=>false);
 							changeSize();
