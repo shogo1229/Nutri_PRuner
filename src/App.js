@@ -28,6 +28,7 @@ import lunchimg from './img/humberger.png'
 import dinnerimg from './img/dinner.png'
 import snackimg from './img/coffee.png'
 import UnityNormalGIF from './img/UnityRun_Normal.gif'
+import blance_koma from './img/balance_koma.jpg'
 
 Modal.setAppElement("#root");
 
@@ -172,6 +173,7 @@ const App = () => {
 	const ButtonClassStyle ="bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-full flex items-center px-6 py-2 font-bold text-32 mx-auto my-5"
 	const elementDishes = 'bg-amber-200 text-[#374151] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1'
 	
+	console.log("tochatGPT length",toChatGPT.length )
 	return (
 		<>
 		<div style={{display: 'flex'}}>
@@ -184,14 +186,16 @@ const App = () => {
 				>
 				<div style={{ display: 'flex', width:'100%',flexDirection: 'row' }}>
 					<div style={{ flex: '1' ,width:'50%'}}>
-						<img src={UnityNormalGIF} style={{ width: '100%' }}></img>
+						<div>
+						<img src={UnityNormalGIF} style={{ width: '100%' ,height:'68vh'}}></img>
+						<img src={blance_koma} style={{ width: '100%' }}></img>
 						<div className="flex flex-row-reverse font-bold mr-2">
 							<h1>© UTJ/UCL</h1>
 						</div>
 						<div className="flex flex-row-reverse font-bold mr-2">
 							<h1>食事バランスガイド：厚生労働省・農林水産省決定</h1>
 						</div>
-
+						</div>
 					</div>
 						<div style={{ flex: '1', overflow: 'auto' ,width:'50%'}}>
 							<div className="font-bold">
@@ -356,13 +360,24 @@ const App = () => {
 					<WebGL index={toWebGL}/>
 				</div>
 				<div style={{ flex: '1 1 40%', border: '8px solid #37AB9D', borderRadius: '15px', overflow: 'auto' }}>
-					{executeElements && 
+					{executeElements &&
+					<>
+					{(toChatGPT.length > 0) && 
 						<h2 className='mt-3 mx-3 font-bold'>その食事メニューでは{toChatGPT}が不足しています！<br/>その食事メニューに以下の料理を加えてみてはいかがですか？</h2>
 						
 					}
-					{executeElements && <ChatGPT index={toChatGPT} />}
+					{(toChatGPT.length > 0) && 
+						<ChatGPT index={toChatGPT} />
+						}
+
+					{(toChatGPT.length === 0 ) && 
+						<h2 className='mt-3 mx-3 font-bold'>完璧な栄養バランスです！</h2>
+					}
+					</>
+				}
 				</div>
 				<div style={{ flex: '1 1 5%' ,overflow: 'auto' }}></div>
+				
 			</div>	
 		</div>
     </div>
