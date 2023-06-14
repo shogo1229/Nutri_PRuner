@@ -8,7 +8,9 @@
 <img src="Readme_img/Koma_gura.gif">
 <img src="Readme_img/koma_falldown.gif">
 # DEMO
-デモページURL「https://main.d29kb7kvs692vl.amplifyapp.com/」　　デモ動画「https://www.youtube.com/watch?v=zqaF00lEQAU」
+デモページURL「https://main.d29kb7kvs692vl.amplifyapp.com/」　　
+
+デモ動画「https://www.youtube.com/watch?v=zqaF00lEQAU」
 
 # 使用技術
 * React/Javascript
