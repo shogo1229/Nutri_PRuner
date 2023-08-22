@@ -1,10 +1,10 @@
-import WebGL from "./WebGL";
+import WebGL from "./component/WebGL";
 import { useState, useEffect } from "react";
-import ModalOpen_morning from "./ModalOpen_morning";
-import ModalOpen_lunch from "./ModalOpen_lunch";
-import ModalOpen_dinner from "./ModalOpen_dinner";
-import ModalOpen_snack from "./ModalOpen_snack";
-import ModalOpen from "./ModalOpen";
+import ModalOpen_morning from "./component/ModalOpen_morning";
+import ModalOpen_lunch from "./component/ModalOpen_lunch";
+import ModalOpen_dinner from "./component/ModalOpen_dinner";
+import ModalOpen_snack from "./component/ModalOpen_snack";
+import ModalOpen from "./component/ModalOpen";
 import {
   updateSelectedDishes_dinner,
   updateSelectedDishes_lunch,
@@ -12,17 +12,17 @@ import {
   updateSelectedDishes_snack,
 } from "./actions/updateSelectedDishes";
 
-import { foodData } from "./NutriDatabase";
+import { foodData } from "./component/NutriDatabase";
 import { useDispatch } from "react-redux";
 import { setToChatGPT } from "./actions/setToChatGPT";
 import { setToWebGL } from "./actions/setToWebGL";
 import { setToState } from "./actions/setToState";
 
-import Header from "./Header";
+import Header from "./component/Header";
 import "../index.css";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
-import ChatGPT from "./ChatGPT";
+import ChatGPT from "./component/ChatGPT";
 import morningimg from "./img/toast.png";
 import lunchimg from "./img/humberger.png";
 import dinnerimg from "./img/dinner.png";

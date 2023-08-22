@@ -1,19 +1,19 @@
-import React from 'react';
-import { foodData } from './NutriDatabase';
-import { useDispatch} from 'react-redux';
-import { setToChatGPT } from './actions/setToChatGPT';
-import { setToWebGL } from './actions/setToWebGL';
-import ChatGPT from './ChatGPT';
+import React from "react";
+import { foodData } from "../NutriDatabase";
+import { useDispatch } from "react-redux";
+import { setToChatGPT } from "../actions/setToChatGPT";
+import { setToWebGL } from "../actions/setToWebGL";
+import ChatGPT from "./ChatGPT";
 
 const CalcNutri = ({ dishlist }) => {
-	console.log("ClacNutri in read")
+  console.log("ClacNutri in read");
   const dispatch = useDispatch();
   const standardValues = {
     syusyoku: { min: 5, max: 7 },
     hukusai: { min: 5, max: 6 },
     syusai: { min: 3, max: 5 },
     dairy: { min: 2, max: 2 },
-    fruits: { min: 2, max: 2 }
+    fruits: { min: 2, max: 2 },
   };
 
   let sum = {
@@ -21,14 +21,13 @@ const CalcNutri = ({ dishlist }) => {
     hukusai: 0,
     syusai: 0,
     dairy: 0,
-    fruits: 0
+    fruits: 0,
   };
 
-  let ClassList = ['主食', '副菜', '主菜', '乳製品', '果物'];
+  let ClassList = ["主食", "副菜", "主菜", "乳製品", "果物"];
 
   let toChatGPT = [];
   let toWebGUI = [];
-
 
   dishlist.forEach((id) => {
     const item = foodData[id.value - 1];
@@ -56,8 +55,8 @@ const CalcNutri = ({ dishlist }) => {
 
   toWebGUI = Object.values(deficiencies); // キーを抜いた数字のみの配列を作成
 
-  console.log('各栄養素合計値', sum); // 合計値をコンソールに出力
-  console.log('WebGUIに渡す用の配列', toWebGUI);
+  console.log("各栄養素合計値", sum); // 合計値をコンソールに出力
+  console.log("WebGUIに渡す用の配列", toWebGUI);
 
   for (const cls in ClassList) {
     if (toWebGUI[cls] < 0) {
@@ -65,7 +64,7 @@ const CalcNutri = ({ dishlist }) => {
     }
   }
 
-  console.log('ChatGPTAPIに渡す用の配列', toChatGPT);
+  console.log("ChatGPTAPIに渡す用の配列", toChatGPT);
   dispatch(setToChatGPT(toChatGPT));
   dispatch(setToWebGL(toWebGUI));
 };
