@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { setToChatGPT } from "./actions/setToChatGPT";
 import { setToWebGL } from "./actions/setToWebGL";
 import { setToState } from "./actions/setToState";
+import { RectangleComponent } from "./component/button";
 
 import Header from "./component/Header";
 import "../index.css";
@@ -26,6 +27,7 @@ import ChatGPT from "./component/ChatGPT";
 import morningimg from "./img/toast.png";
 import lunchimg from "./img/humberger.png";
 import dinnerimg from "./img/dinner.png";
+import upload from "./img/upload.png";
 import snackimg from "./img/coffee.png";
 import UnityNormalGIF from "./img/UnityRun_Normal.gif";
 import blance_koma from "./img/balance_koma.jpg";
@@ -170,99 +172,21 @@ const MobileComponent = () => {
   };
   const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
   const toWebGL = useSelector((state) => state.setTo_WebGL);
-  const ButtonClassStyle =
-    "bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-full flex items-center px-6 py-2 font-bold text-32 mx-auto my-5";
+  const ButtonClassStyle = "bg-[#37AB9D] hover:bg-emerald-400";
   const elementDishes =
     "bg-amber-200 text-[#374151] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1";
 
+  const rectangleStyle = {
+    width: "300px",
+    height: "200px",
+    backgroundColor: "lightblue",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
   console.log("tochatGPT length", toChatGPT.length);
   return (
     <>
-      <div style={{ display: "flex" }}>
-        {isModalOpen && (
-          <Modal
-            className="flex mx-auto my-20 h-5/6 w-3/4 bg-white bg-opacity-100 rounded-xl border-solid border-[#37AB9D] border-8"
-            isOpen={true}
-            onRequestClose={closeModalFn}
-            shouldCloseOnOverlayClick={true}
-          >
-            <div
-              style={{ display: "flex", width: "100%", flexDirection: "row" }}
-            >
-              <div style={{ flex: "1", width: "50%" }}>
-                <div>
-                  <img
-                    src={UnityNormalGIF}
-                    style={{ width: "100%", height: "68vh" }}
-                  ></img>
-                  <img src={blance_koma} style={{ width: "100%" }}></img>
-                  <div className="flex flex-row-reverse font-bold mr-2">
-                    <h1>© UTJ/UCL</h1>
-                  </div>
-                  <div className="flex flex-row-reverse font-bold mr-2">
-                    <h1>食事バランスガイド・農林水産省決定</h1>
-                  </div>
-                </div>
-              </div>
-              <div style={{ flex: "1", overflow: "auto", width: "50%" }}>
-                <div className="font-bold">
-                  <h1 className="text-64 flex flex-row justify-center">
-                    <h2 className="text-[#37AB9D]">Nutri</h2>
-                    <h2 className="text-[#6bbaff]">P</h2>
-                    <h2 className="text-[#d8d355]">Runer</h2>
-                  </h1>
-
-                  <div className="flex flex-row justify-center">
-                    <h2 className="text-32 text-[#37AB9D]">Nutrient</h2>
-                    <h2 className="text-32 text-[#05100f]">×</h2>
-                    <h2 className="text-32 text-[#6bbaff]">Plan</h2>
-                    <h2 className="text-32 text-[#05100f]">×</h2>
-                    <h2 className="text-32 text-[#d8d355]">Runner</h2>
-                  </div>
-
-                  <div className="my-5 bg-amber-200 rounded-xl px-3 py-3 mx-3 overflow-wrap">
-                    <h1 className="text-24">This IS Mobile</h1>
-                    <h1>食事バランスきっちり取れてますか？？？</h1>
-                    <h1>
-                      ハッカソン中は特に3食インスタント食品にエナジードリンクのような限界生活をしていませんか！？
-                    </h1>
-                    <h1>
-                      食事メニューを選択してUnityちゃんをコマの上で走らせよう！！！
-                    </h1>
-                  </div>
-                  <div className="my-5 bg-amber-200 rounded-xl px-3 py-3 mx-3">
-                    <h1 className="text-24">説明</h1>
-                    <h1>
-                      あなたには朝ごはん、昼ごはん、晩ごはん、間食に何を食べたかを選択してもらいます！
-                    </h1>
-                    <h1>
-                      もしちゃんとバランスが取れた食事を取れていればUnityちゃんがコマの上で元気に走ってくれます！
-                    </h1>
-                    <h1>
-                      でも食事バランスが悪いとコマのバランスが悪くなってUnityちゃんが落ちちゃいます！
-                    </h1>
-                    <h1>
-                      バランスが悪いとコマのサイズが変化します！上から順番に主食・主菜・副菜・果物・乳製品を表しています！
-                    </h1>
-                    <h1>
-                      バランスを考えた食事を取って限界食生活を改善しよう！！！！
-                    </h1>
-                  </div>
-                  <div className="my-5 bg-amber-200 rounded-xl px-3 py-3 mx-3">
-                    <h1 className="text-24">操作方法</h1>
-                    <h1>まず初めに書く食事時に食べた料理を選択！</h1>
-                    <h1>次に左下のSubmitボタンを押してデータを提出！</h1>
-                    <h1>
-                      最後に右上のresultボタンを押せばUnityちゃんが走れてるか表示されます！
-                    </h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Modal>
-        )}
-      </div>
-
       <div
         style={{ display: "flex", flexDirection: "column", height: "100vh" }}
       >
@@ -270,185 +194,110 @@ const MobileComponent = () => {
           <Header />
         </header>
 
-        <div
-          style={{ display: "flex", flexDirectin: "column", height: "100vh" }}
-        >
-          <div style={{ flex: "1", width: "50%", overflow: "auto" }}>
-            <div
-              style={{
-                display: "flex",
-                height: "100%",
-                flexDirection: "column",
-              }}
-            >
-              <div style={{ flex: "1 1 20%" }}>
+        <div className="flex h-screen">
+          <div className="w-1/5 bg-primary bg-red-200">
+            {/*画面分割　左*/}
+            <div className="flex h-screen">
+              <div className="m-auto flex flex-col items-center space-y-4">
                 <button
                   className={ButtonClassStyle}
                   onClick={handleOpenModal_morning}
-                  style={{ width: "60%", height: "60%" }}
                 >
-                  <img src={morningimg} alt="Morning" className="mr-0 w-10" />
-                  <p className="m-auto">Morning</p>
+                  <img src={morningimg} alt="Morning" className="w-10" />
                 </button>
-                {/* {selectedDishes_morning.map((dish) => (
-						<div className={elementDishes}
-							key={dish.value}>{dish.label}
-						</div>
-					))} */}
-              </div>
-              <div style={{ flex: "1 1 20%" }}>
                 <button
                   className={ButtonClassStyle}
                   onClick={handleOpenModal_lunch}
-                  style={{ width: "60%", height: "60%" }}
                 >
-                  <img src={lunchimg} alt="Lunch" className="mr-0 w-10" />
-                  <p className="m-auto">Lunch</p>
+                  <img src={lunchimg} alt="Lunch" className="w-10" />
                 </button>
-                {/* {selectedDishes_lunch.map((dish) => (
-						<div  className={elementDishes}
-							key={dish.value}>{dish.label}
-						</div>
-						))} */}
-              </div>
-              <div style={{ flex: "1 1 20%" }}>
                 <button
                   className={ButtonClassStyle}
                   onClick={handleOpenModal_dinner}
-                  style={{ width: "60%", height: "60%" }}
                 >
-                  <img src={dinnerimg} alt="dinner" className="mr-0 w-10" />
-                  <p className="m-auto">Dinner</p>
+                  <img src={dinnerimg} alt="dinner" className="w-10" />
                 </button>
-
-                {/* {selectedDishes_dinner.map((dish) => (
-						<div className={elementDishes}
-							key={dish.value}>{dish.label}
-						</div>
-						))} */}
-              </div>
-
-              <div style={{ flex: "1 1 20%" }}>
                 <button
                   className={ButtonClassStyle}
                   onClick={handleOpenModal_snack}
-                  style={{ width: "60%", height: "60%" }}
                 >
-                  <img src={snackimg} alt="Snack" className="mr-0 w-10" />
-                  <p className="m-auto">Snack</p>
+                  <img src={snackimg} alt="Snack" className="w-10" />
                 </button>
-                {/* {selectedDishes_snack.map((dish) => (
-						<div className={elementDishes}
-							key={dish.value}>{dish.label}</div>
-						))} */}
+                <button
+                  className={ButtonClassStyle}
+                  onClick={() => {
+                    const allSelectedDishes = [
+                      ...selectedDishes_morning,
+                      ...selectedDishes_lunch,
+                      ...selectedDishes_dinner,
+                      ...selectedDishes_snack,
+                    ];
+                    setSelectedDishes(allSelectedDishes);
+                    handleCalcNutri(allSelectedDishes);
+                    handleExecuteElements();
+                  }}
+                >
+                  <img src={upload} alt="upload" className="w-10" />
+                </button>
               </div>
-
-              <div></div>
-
-              {isModalOpen_morning && (
-                <ModalOpen_morning
-                  Menu="morning"
-                  closeModalFn={handleCloseModal_morning}
-                />
-              )}
-
-              {isModalOpen_lunch && (
-                <ModalOpen_lunch
-                  Menu="lunch"
-                  closeModalFn={handleCloseModal_lunch}
-                />
-              )}
-
-              {isModalOpen_dinner && (
-                <ModalOpen_dinner
-                  Menu="dinner"
-                  closeModalFn={handleCloseModal_dinner}
-                />
-              )}
-
-              {isModalOpen_snack && (
-                <ModalOpen_snack
-                  Menu="snack"
-                  closeModalFn={handleCloseModal_snack}
-                />
-              )}
-              <a
-                href="#_"
-                class="relative inline-flex items-center px-12 py-3 mb-4 mx-auto overflow-hidden text-32 font-32 font-bold w-64 text-[#258F00] border-8 border-[#BDFFC4] rounded-full hover:text-[#258F00] group hover:bg-gray-50"
-                onClick={() => {
-                  const allSelectedDishes = [
-                    ...selectedDishes_morning,
-                    ...selectedDishes_lunch,
-                    ...selectedDishes_dinner,
-                    ...selectedDishes_snack,
-                  ];
-                  setSelectedDishes(allSelectedDishes);
-                  handleCalcNutri(allSelectedDishes);
-                  handleExecuteElements();
-                }}
-              >
-                <span class="absolute left-0 block w-48 h-0 transition-all bg-[#BDFFC4] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                <span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                  <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    ></path>
-                  </svg>
-                </span>
-                <button class="relative">Submit</button>
-              </a>
             </div>
+
+            {isModalOpen_morning && (
+              <ModalOpen_morning
+                Menu="morning"
+                closeModalFn={handleCloseModal_morning}
+              />
+            )}
+            {isModalOpen_lunch && (
+              <ModalOpen_lunch
+                Menu="lunch"
+                closeModalFn={handleCloseModal_lunch}
+              />
+            )}
+            {isModalOpen_dinner && (
+              <ModalOpen_dinner
+                Menu="dinner"
+                closeModalFn={handleCloseModal_dinner}
+              />
+            )}
+            {isModalOpen_snack && (
+              <ModalOpen_snack
+                Menu="snack"
+                closeModalFn={handleCloseModal_snack}
+              />
+            )}
           </div>
-          <div style={{ flex: "1", width: "50%", overflow: "auto" }}>
+          <div className="w-4/5 bg-secondary bg-red-100">
+            {/*画面分割　右*/}
+            <WebGL index={toWebGL} />
             <div
               style={{
-                display: "flex",
-                height: "100%",
-                flexDirection: "column",
+                flex: "1 1 40%",
+                border: "8px solid #37AB9D",
+                borderRadius: "15px",
+                overflow: "auto",
+                maxHeight: executeElements ? "none" : "300px", // 適切な高さを設定
               }}
             >
-              <div style={{ flex: "1 1 60%" }}>
-                <WebGL index={toWebGL} />
-              </div>
-              <div
-                style={{
-                  flex: "1 1 40%",
-                  border: "8px solid #37AB9D",
-                  borderRadius: "15px",
-                  overflow: "auto",
-                }}
-              >
-                {executeElements && (
-                  <>
-                    {toChatGPT.length > 0 && (
-                      <h2 className="mt-3 mx-3 font-bold">
-                        その食事メニューでは{toChatGPT}が不足しています！
-                        <br />
-                        その食事メニューに以下の料理を加えてみてはいかがですか？
-                      </h2>
-                    )}
-                    {toChatGPT.length > 0 && <ChatGPT index={toChatGPT} />}
+              {executeElements && (
+                <>
+                  {toChatGPT.length > 0 && (
+                    <h2 className="mt-3 mx-3 font-bold">
+                      その食事メニューでは{toChatGPT}が不足しています！
+                      <br />
+                      その食事メニューに以下の料理を加えてみてはいかがですか？
+                    </h2>
+                  )}
+                  {toChatGPT.length > 0 && <ChatGPT index={toChatGPT} />}
 
-                    {toChatGPT.length === 0 && (
-                      <h2 className="mt-3 mx-3 font-bold">
-                        不足ではありませんが、もしかして食べすぎてませんか？
-                        <></>
-                        コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！
-                      </h2>
-                    )}
-                  </>
-                )}
-              </div>
-              <div style={{ flex: "1 1 5%", overflow: "auto" }}></div>
+                  {toChatGPT.length === 0 && (
+                    <h2 className="mt-3 mx-3 font-bold">
+                      不足ではありませんが、もしかして食べすぎてませんか？
+                      コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！
+                    </h2>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
