@@ -5,6 +5,7 @@ import ModalOpen_lunch from "./component/ModalOpen_lunch";
 import ModalOpen_dinner from "./component/ModalOpen_dinner";
 import ModalOpen_snack from "./component/ModalOpen_snack";
 import CustomModal from "./component/ModalOpen_tutorial";
+import showChatGPT from "./component/showChatGPT";
 import {
   updateSelectedDishes_dinner,
   updateSelectedDishes_lunch,
@@ -240,8 +241,6 @@ const PCComponent = () => {
                 </button>
               </div>
 
-              <div></div>
-
               {isModalOpen_morning && (
                 <ModalOpen_morning
                   Menu="morning"
@@ -322,6 +321,7 @@ const PCComponent = () => {
                   border: "8px solid #37AB9D",
                   borderRadius: "15px",
                   overflow: "auto",
+                  maxHeight: executeElements ? "none" : "300px", // 適切な高さを設定
                 }}
               >
                 {executeElements && (
@@ -338,7 +338,6 @@ const PCComponent = () => {
                     {toChatGPT.length === 0 && (
                       <h2 className="mt-3 mx-3 font-bold">
                         不足ではありませんが、もしかして食べすぎてませんか？
-                        <></>
                         コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！
                       </h2>
                     )}
