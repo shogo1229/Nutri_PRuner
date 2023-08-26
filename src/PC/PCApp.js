@@ -240,7 +240,6 @@ const PCComponent = () => {
                   <p className="m-auto">Snack</p>
                 </button>
               </div>
-
               {isModalOpen_morning && (
                 <ModalOpen_morning
                   Menu="morning"
