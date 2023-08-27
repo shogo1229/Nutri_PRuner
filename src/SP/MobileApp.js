@@ -104,7 +104,6 @@ const MobileComponent = () => {
   //選択された料理を元にバランスを計算する---------------------------------------------------------------------------------------------------------------------------------
   const handleCalcNutri = (dishlist) => {
     console.log("CalcNutri in read");
-
     const standardValues = {
       syusyoku: { min: 5, max: 7 },
       hukusai: { min: 5, max: 6 },
@@ -112,7 +111,6 @@ const MobileComponent = () => {
       dairy: { min: 2, max: 2 },
       fruits: { min: 2, max: 2 },
     };
-
     let sum = {
       syusyoku: 0,
       hukusai: 0,
@@ -120,23 +118,18 @@ const MobileComponent = () => {
       dairy: 0,
       fruits: 0,
     };
-
     let ClassList = ["主食", "副菜", "主菜", "乳製品", "果物"];
-
     let toChatGPT = [];
     let toWebGL = [];
-
-    dishlist.forEach((id) => {
-      const item = foodData[id.value - 1];
+    dishlist.forEach((item) => {
+      //dishlistは各Modalで選択された料理を格納してある
+      sum.syusai += item.syusai;
       sum.syusyoku += item.syusyoku;
       sum.hukusai += item.hukusai;
-      sum.syusai += item.syusai;
-      sum.dairy += item.dairy;
       sum.fruits += item.fruits;
+      sum.dairy += item.dairy;
     });
-
     const deficiencies = {};
-
     // 基準値と比較して不足している要素を計算し、deficienciesオブジェクトに格納する
     for (const nutrient in sum) {
       const value = sum[nutrient];
@@ -149,17 +142,13 @@ const MobileComponent = () => {
         deficiencies[nutrient] = 0;
       }
     }
-
     toWebGL = Object.values(deficiencies); // キーを抜いた数字のみの配列を作成
-
     console.log("各栄養素合計値", sum); // 合計値をコンソールに出力
-
     for (const cls in ClassList) {
       if (toWebGL[cls] < 0) {
         toChatGPT.push(ClassList[cls]);
       }
     }
-
     console.log("ChatGPTAPIに渡す用の配列", toChatGPT);
     dispatch(setToChatGPT(toChatGPT));
     console.log("WebGUIに渡す用の配列", toWebGL);
