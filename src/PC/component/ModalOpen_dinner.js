@@ -1,11 +1,11 @@
 import Modal from "react-modal";
-import options from "./FoodList";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedDishes_dinner } from "../actions/updateSelectedDishes";
 import { useTodos } from "../../FireBase/TodosProvider"; //Context API
 
 const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
   const dispatch = useDispatch();
+  const { todos } = useTodos();
   const selectedDishes_dinner = useSelector(
     (state) => state.selectedDishes_dinner
   );
@@ -27,8 +27,6 @@ const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
     }
   };
 
-  const { todos } = useTodos();
-
   return (
     <div className="App">
       <Modal
@@ -37,11 +35,6 @@ const ModalOpen_dinner = ({ Menu, closeModalFn }) => {
         onRequestClose={closeModalFn}
         shouldCloseOnOverlayClick={true}
       >
-        {/* <div>
-          {todos.map((todo) => (
-            <li key={todo.id}>{todo.name}</li>
-          ))}
-        </div> */}
         <div className="flex flex-wrap justify-center">
           {todos.map((dish_dinner) => (
             <div

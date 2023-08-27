@@ -35,6 +35,9 @@ export function TodosProvider({ children }) {
 
     fetchTodos();
   }, []);
+  console.log(
+    "---------------------------Load Fire Base---------------------------"
+  );
   return (
     <TodosContext.Provider value={{ todos }}>{children}</TodosContext.Provider>
   );
