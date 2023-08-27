@@ -1,10 +1,11 @@
 import Modal from "react-modal";
-import options from "./FoodList";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedDishes_snack } from "../actions/updateSelectedDishes";
+import { useTodos } from "../../FireBase/TodosProvider"; //Context API
 
 const ModalOpen_snack = ({ Menu, closeModalFn }) => {
   const dispatch = useDispatch();
+  const { todos } = useTodos();
   const selectedDishes_snack = useSelector(
     (state) => state.selectedDishes_snack
   );
@@ -35,26 +36,26 @@ const ModalOpen_snack = ({ Menu, closeModalFn }) => {
         shouldCloseOnOverlayClick={true}
       >
         <div className="flex flex-wrap justify-center">
-          {options.map((dish_dinner) => (
+          {todos.map((dish_snack) => (
             <div
-              key={dish_dinner.value}
+              key={dish_snack.id}
               className={`px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full ${
                 selectedDishes_snack.some(
-                  (selected) => selected.value === dish_dinner.value
+                  (selected) => selected.value === dish_snack.value
                 )
                   ? "bg-amber-300 transition-all duration-500 ease-out"
                   : ""
               }`}
-              onClick={() => toggleDishSelection_snack(dish_dinner)}
+              onClick={() => toggleDishSelection_snack(dish_snack)}
               style={{
                 backgroundColor: selectedDishes_snack.some(
-                  (selected) => selected.value === dish_dinner.value
+                  (selected) => selected.value === dish_snack.value
                 )
                   ? "#FDE68A"
                   : "",
               }}
             >
-              {dish_dinner.label}
+              {dish_snack.name}
             </div>
           ))}
         </div>

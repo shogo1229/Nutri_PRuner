@@ -1,95 +1,105 @@
-import WebGL from "./component/WebGL";
+//ライブラリ系---------------------------------------------------------------------------------------------------------------------------------
+import Modal from "react-modal";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+//CSS---------------------------------------------------------------------------------------------------------------------------------
+import "../index.css";
+
+//料理選択画面用---------------------------------------------------------------------------------------------------------------------------------
 import ModalOpen_morning from "./component/ModalOpen_morning";
 import ModalOpen_lunch from "./component/ModalOpen_lunch";
 import ModalOpen_dinner from "./component/ModalOpen_dinner";
 import ModalOpen_snack from "./component/ModalOpen_snack";
-import ModalOpen from "./component/ModalOpen";
+import TutorialModal from "./component/ModalOpen_tutorial";
+import { foodData } from "./component/NutriDatabase";
+
+//右画面---------------------------------------------------------------------------------------------------------------------------------
+import WebGL from "./component/WebGL";
+import ChatGPT from "./component/ChatGPT";
+//import showChatGPT from "./component/showChatGPT"; //未実装
+
+//ヘッダー---------------------------------------------------------------------------------------------------------------------------------
+import Header from "./component/Header";
+
+//Redux actions---------------------------------------------------------------------------------------------------------------------------------
 import {
   updateSelectedDishes_dinner,
   updateSelectedDishes_lunch,
   updateSelectedDishes_morning,
   updateSelectedDishes_snack,
 } from "./actions/updateSelectedDishes";
-
-import { foodData } from "./component/NutriDatabase";
-import { useDispatch } from "react-redux";
 import { setToChatGPT } from "./actions/setToChatGPT";
 import { setToWebGL } from "./actions/setToWebGL";
 import { setToState } from "./actions/setToState";
-import { RectangleComponent } from "./component/button";
+import { useTodos } from "../FireBase/TodosProvider"; //Context API
 
-import Header from "./component/Header";
-import "../index.css";
-import Modal from "react-modal";
-import { useSelector } from "react-redux";
-import ChatGPT from "./component/ChatGPT";
+//表示用画像---------------------------------------------------------------------------------------------------------------------------------
 import morningimg from "./img/toast.png";
 import lunchimg from "./img/humberger.png";
 import dinnerimg from "./img/dinner.png";
-import upload from "./img/upload.png";
 import snackimg from "./img/coffee.png";
+import upload from "./img/upload.png";
 import UnityNormalGIF from "./img/UnityRun_Normal.gif";
 import blance_koma from "./img/balance_koma.jpg";
 
 Modal.setAppElement("#root");
 
 const MobileComponent = () => {
+  //dispatch---------------------------------------------------------------------------------------------------------------------------------
+  const dispatch = useDispatch();
+
+  //朝食---------------------------------------------------------------------------------------------------------------------------------
   const [isModalOpen_morning, setIsModalOpen_morning] = useState(false);
   const selectedDishes_morning = useSelector(
     (state) => state.selectedDishes_morning
   );
   const [selectedDishes, setSelectedDishes] = useState([]);
-
   const handleOpenModal_morning = () => {
     setIsModalOpen_morning(true);
   };
-
   const handleCloseModal_morning = () => {
     setIsModalOpen_morning(false);
   };
 
+  //昼食---------------------------------------------------------------------------------------------------------------------------------
   const [isModalOpen_lunch, setIsModalOpen_lunch] = useState(false);
   const selectedDishes_lunch = useSelector(
     (state) => state.selectedDishes_lunch
   );
-
   const handleOpenModal_lunch = () => {
     setIsModalOpen_lunch(true);
   };
-
   const handleCloseModal_lunch = () => {
     setIsModalOpen_lunch(false);
   };
 
+  //夕食---------------------------------------------------------------------------------------------------------------------------------
   const [isModalOpen_dinner, setIsModalOpen_dinner] = useState(false);
   const selectedDishes_dinner = useSelector(
     (state) => state.selectedDishes_dinner
   );
-
   const handleOpenModal_dinner = () => {
     setIsModalOpen_dinner(true);
   };
-
   const handleCloseModal_dinner = () => {
     setIsModalOpen_dinner(false);
   };
 
+  //間食---------------------------------------------------------------------------------------------------------------------------------
   const [isModalOpen_snack, setIsModalOpen_snack] = useState(false);
   const selectedDishes_snack = useSelector(
     (state) => state.selectedDishes_snack
   );
-
   const handleOpenModal_snack = () => {
     setIsModalOpen_snack(true);
   };
-
   const handleCloseModal_snack = () => {
     setIsModalOpen_snack(false);
   };
 
-  const dispatch = useDispatch();
-
+  //選択された料理を元にバランスを計算する---------------------------------------------------------------------------------------------------------------------------------
   const handleCalcNutri = (dishlist) => {
     console.log("CalcNutri in read");
 
@@ -153,28 +163,29 @@ const MobileComponent = () => {
     console.log("WebGUIに渡す用の配列", toWebGL);
     dispatch(setToWebGL(toWebGL));
   };
-
+  //Submitbutton用---------------------------------------------------------------------------------------------------------------------------------
   const [executeElements, setExecuteElements] = useState(false); // ボタンがクリックされたかどうかの状態
-
   const handleExecuteElements = () => {
     setExecuteElements(() => true);
     dispatch(setToState(true)); // ボタンがクリックされたら状態を更新して要素を実行
   };
 
+  //初回読み込みモーダル表示---------------------------------------------------------------------------------------------------------------------------------
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   useEffect(() => {
     setIsModalOpen(true); // ページがロードされた後にモーダルを表示
   }, []);
-
   const closeModalFn = () => {
     setIsModalOpen(false);
   };
+
+  //ChatGPT,WebGLを定義---------------------------------------------------------------------------------------------------------------------------------
   const toChatGPT = useSelector((state) => state.setTo_ChatGPT);
   const toWebGL = useSelector((state) => state.setTo_WebGL);
-  const ButtonClassStyle = "bg-[#37AB9D] hover:bg-emerald-400";
-  const elementDishes =
-    "bg-amber-200 text-[#374151] rounded-full px-4 text-center py-2 font-bold my-1 inline-block mx-1";
+
+  //style定義---------------------------------------------------------------------------------------------------------------------------------
+  const ButtonClassStyle =
+    "bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-full flex items-center px-6 py-2 font-bold text-32 mx-auto my-5";
 
   const rectangleStyle = {
     width: "300px",
@@ -187,6 +198,9 @@ const MobileComponent = () => {
   console.log("tochatGPT length", toChatGPT.length);
   return (
     <>
+      <div style={{ display: "flex" }}>
+        <TutorialModal />
+      </div>
       <div
         style={{ display: "flex", flexDirection: "column", height: "100vh" }}
       >
@@ -243,24 +257,28 @@ const MobileComponent = () => {
             </div>
 
             {isModalOpen_morning && (
+              // eslint-disable-next-line react/jsx-pascal-case
               <ModalOpen_morning
                 Menu="morning"
                 closeModalFn={handleCloseModal_morning}
               />
             )}
             {isModalOpen_lunch && (
+              // eslint-disable-next-line react/jsx-pascal-case
               <ModalOpen_lunch
                 Menu="lunch"
                 closeModalFn={handleCloseModal_lunch}
               />
             )}
             {isModalOpen_dinner && (
+              // eslint-disable-next-line react/jsx-pascal-case
               <ModalOpen_dinner
                 Menu="dinner"
                 closeModalFn={handleCloseModal_dinner}
               />
             )}
             {isModalOpen_snack && (
+              // eslint-disable-next-line react/jsx-pascal-case
               <ModalOpen_snack
                 Menu="snack"
                 closeModalFn={handleCloseModal_snack}
