@@ -4,7 +4,7 @@ import { useState } from "react";
 import UnityNormalGIF from "../img/UnityRun_Normal.gif";
 import blance_koma from "../img/balance_koma.jpg";
 
-function CustomModal() {
+function TutorialModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
 
   const closeModal = () => {
@@ -95,4 +95,4 @@ function CustomModal() {
   );
 }
 
-export default CustomModal;
+export default TutorialModal;
