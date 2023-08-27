@@ -13,7 +13,6 @@ import ModalOpen_lunch from "./component/ModalOpen_lunch";
 import ModalOpen_dinner from "./component/ModalOpen_dinner";
 import ModalOpen_snack from "./component/ModalOpen_snack";
 import TutorialModal from "./component/ModalOpen_tutorial";
-import { foodData } from "./component/NutriDatabase";
 
 //右画面---------------------------------------------------------------------------------------------------------------------------------
 import WebGL from "./component/WebGL";
@@ -47,6 +46,9 @@ import blance_koma from "./img/balance_koma.jpg";
 Modal.setAppElement("#root");
 
 const MobileComponent = () => {
+  //FireBaseから取得した料理データ---------------------------------------------------------------------------------------------------------------------------------
+  const { foodData } = useTodos();
+
   //dispatch---------------------------------------------------------------------------------------------------------------------------------
   const dispatch = useDispatch();
 
