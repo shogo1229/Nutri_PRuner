@@ -43,43 +43,6 @@ function TutorialModal() {
                 style={{ width: "100%", height: "68vh" }}
                 alt="Tab Content"
               />
-              <div>
-                <div className="relative mt-4">
-                  <button
-                    onClick={() => handleTabClick("tab1")}
-                    className={`tab-button ${
-                      selectedTab === "tab1"
-                        ? "active-tab bg-gray-400 text-white"
-                        : "bg-gray-300 text-gray-800"
-                    }`}
-                    style={{ marginRight: "10px", fontSize: "16px" }}
-                  >
-                    食事バランス完璧！
-                  </button>
-                  <button
-                    onClick={() => handleTabClick("tab2")}
-                    className={`tab-button ${
-                      selectedTab === "tab2"
-                        ? "active-tab bg-gray-400 text-white"
-                        : "bg-gray-300 text-gray-800"
-                    }`}
-                    style={{ marginRight: "10px", fontSize: "16px" }}
-                  >
-                    食事バランスがちょっと悪い
-                  </button>
-                  <button
-                    onClick={() => handleTabClick("tab3")}
-                    className={`tab-button ${
-                      selectedTab === "tab3"
-                        ? "active-tab bg-gray-400 text-white"
-                        : "bg-gray-300 text-gray-800"
-                    }`}
-                    style={{ fontSize: "16px" }}
-                  >
-                    食事バランスが凄く悪い
-                  </button>
-                </div>
-              </div>
 
               <img src={blance_koma} style={{ width: "100%" }}></img>
               <div className="flex flex-row-reverse font-bold mr-2">
@@ -141,6 +104,43 @@ function TutorialModal() {
                 <h1>
                   最後に右上のresultボタンを押せばUnityちゃんが走れてるか表示されます！
                 </h1>
+              </div>
+              <div className="rounded-xl px-12">
+                <div className="relative mt-4">
+                  <button
+                    onClick={() => handleTabClick("tab1")}
+                    className={`tab-button ${
+                      selectedTab === "tab1"
+                        ? "active-tab bg-gray-400 text-white"
+                        : "bg-gray-300 text-gray-800"
+                    }`}
+                    style={{ marginRight: "10px", fontSize: "16px" }}
+                  >
+                    食事バランス完璧！
+                  </button>
+                  <button
+                    onClick={() => handleTabClick("tab2")}
+                    className={`tab-button ${
+                      selectedTab === "tab2"
+                        ? "active-tab bg-gray-400 text-white"
+                        : "bg-gray-300 text-gray-800"
+                    }`}
+                    style={{ marginRight: "10px", fontSize: "16px" }}
+                  >
+                    食事バランスがちょっと悪い
+                  </button>
+                  <button
+                    onClick={() => handleTabClick("tab3")}
+                    className={`tab-button ${
+                      selectedTab === "tab3"
+                        ? "active-tab bg-gray-400 text-white"
+                        : "bg-gray-300 text-gray-800"
+                    }`}
+                    style={{ fontSize: "16px" }}
+                  >
+                    食事バランスが凄く悪い
+                  </button>
+                </div>
               </div>
             </div>
           </div>
