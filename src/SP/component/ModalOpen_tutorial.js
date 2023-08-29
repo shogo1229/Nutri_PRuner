@@ -2,30 +2,55 @@ import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
 import UnityNormalGIF from "../img/UnityRun_Normal.gif";
+import UnityfalldownGIF from "../img/UnityRun_falldown.gif";
+import UnityguraguraGIF from "../img/UnityRun_guragura.gif";
 import blance_koma from "../img/balance_koma.jpg";
 
 function TutorialModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [selectedTab, setSelectedTab] = useState("tab1"); // Initialize with a default tab
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
 
+  const handleTabClick = (tab) => {
+    setSelectedTab(tab);
+  };
+
+  const getImageForTab = () => {
+    if (selectedTab === "tab1") {
+      return UnityNormalGIF;
+    } else if (selectedTab === "tab2") {
+      return UnityguraguraGIF; // Use your alternate image source here
+    } else if (selectedTab === "tab3") {
+      return UnityfalldownGIF;
+    }
+  };
   return (
     <>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal} // This will close the modal when clicking outside
+        onRequestClose={closeModal}
         shouldCloseOnOverlayClick={true}
-        className="flex mx-auto my-20 h-5/6 w-3/4 bg-white bg-opacity-100 rounded-xl border-solid border-[#37AB9D] border-8"
+        className="flex mx-auto my-20 h-5/6 w-6/5 bg-white bg-opacity-100 rounded-xl border-solid border-[#37AB9D] border-8"
       >
+        <button
+          onClick={closeModal}
+          className="absolute text-5xl top-12.5 font-bold text-red-500"
+        >
+          ×
+        </button>
+
         <div style={{ display: "flex", width: "100%", flexDirection: "row" }}>
           <div style={{ flex: "1", width: "50%" }}>
             <div>
               <img
-                src={UnityNormalGIF}
+                src={getImageForTab()}
                 style={{ width: "100%", height: "68vh" }}
-              ></img>
+                alt="Tab Content"
+              />
+
               <img src={blance_koma} style={{ width: "100%" }}></img>
               <div className="flex flex-row-reverse font-bold mr-2">
                 <h1>© UTJ/UCL</h1>
@@ -86,6 +111,43 @@ function TutorialModal() {
                 <h1>
                   最後に右上のresultボタンを押せばUnityちゃんが走れてるか表示されます！
                 </h1>
+              </div>
+              <div className="rounded-xl px-12">
+                <div className="relative mt-4">
+                  <button
+                    onClick={() => handleTabClick("tab1")}
+                    className={`tab-button ${
+                      selectedTab === "tab1"
+                        ? "active-tab bg-gray-400 text-white"
+                        : "bg-gray-300 text-gray-800"
+                    }`}
+                    style={{ marginRight: "10px", fontSize: "16px" }}
+                  >
+                    食事バランス完璧！
+                  </button>
+                  <button
+                    onClick={() => handleTabClick("tab2")}
+                    className={`tab-button ${
+                      selectedTab === "tab2"
+                        ? "active-tab bg-gray-400 text-white"
+                        : "bg-gray-300 text-gray-800"
+                    }`}
+                    style={{ marginRight: "10px", fontSize: "16px" }}
+                  >
+                    食事バランスがちょっと悪い
+                  </button>
+                  <button
+                    onClick={() => handleTabClick("tab3")}
+                    className={`tab-button ${
+                      selectedTab === "tab3"
+                        ? "active-tab bg-gray-400 text-white"
+                        : "bg-gray-300 text-gray-800"
+                    }`}
+                    style={{ fontSize: "16px" }}
+                  >
+                    食事バランスが凄く悪い
+                  </button>
+                </div>
               </div>
             </div>
           </div>
