@@ -6,7 +6,6 @@ import UnityNormalGIF from "../img/UnityRun_Normal.gif";
 import UnityfalldownGIF from "../img/UnityRun_falldown.gif";
 import UnityguraguraGIF from "../img/UnityRun_guragura.gif";
 import Next from "../img/next.png";
-import blance_koma from "../img/balance_koma.jpg";
 
 function TutorialModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);

@@ -1,31 +1,26 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
 import UnityNormalGIF from "../img/UnityRun_Normal.gif";
 import UnityfalldownGIF from "../img/UnityRun_falldown.gif";
 import UnityguraguraGIF from "../img/UnityRun_guragura.gif";
+import Next from "../img/next.png";
 import blance_koma from "../img/balance_koma.jpg";
 
 function TutorialModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
-  const [selectedTab, setSelectedTab] = useState("tab1"); // Initialize with a default tab
+  const [currentImage, setCurrentImage] = useState(0);
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
-
-  const handleTabClick = (tab) => {
-    setSelectedTab(tab);
+  const handleNextImageClick = () => {
+    setCurrentImage((currentImage + 1) % 3);
   };
 
-  const getImageForTab = () => {
-    if (selectedTab === "tab1") {
-      return UnityNormalGIF;
-    } else if (selectedTab === "tab2") {
-      return UnityguraguraGIF; // Use your alternate image source here
-    } else if (selectedTab === "tab3") {
-      return UnityfalldownGIF;
-    }
+  const handlePreviousImageClick = () => {
+    setCurrentImage((currentImage - 1 + 3) % 3);
   };
   return (
     <>
@@ -39,17 +34,48 @@ function TutorialModal() {
           <div style={{ flex: "1", width: "50%" }}>
             <div>
               <img
-                src={getImageForTab()}
-                style={{ width: "100%", height: "68vh" }}
-                alt="Tab Content"
+                src={
+                  [UnityNormalGIF, UnityguraguraGIF, UnityfalldownGIF][
+                    currentImage
+                  ]
+                }
+                style={{ width: "100%", height: "60vh" }}
               />
-
               <img src={blance_koma} style={{ width: "100%" }}></img>
               <div className="flex flex-row-reverse font-bold mr-2">
                 <h1>© UTJ/UCL</h1>
               </div>
               <div className="flex flex-row-reverse font-bold mr-2">
                 <h1>食事バランスガイド：厚生労働省・農林水産省決定</h1>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div
+                style={{ flex: "1", width: "50%", justifyContent: "center" }}
+              >
+                <img
+                  src={Next}
+                  onClick={handlePreviousImageClick}
+                  className="tab-image"
+                  style={{
+                    width: "10%",
+                    transform: "scaleX(-1)",
+                    display: "block",
+                    margin: "0 auto",
+                  }}
+                />
+              </div>
+              <div style={{ flex: "1", width: "50%" }}>
+                <img
+                  src={Next}
+                  onClick={handleNextImageClick}
+                  className="tab-image"
+                  style={{
+                    width: "10%",
+                    display: "block",
+                    margin: "0 auto",
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -90,6 +116,7 @@ function TutorialModal() {
                 <h1>
                   でも食事バランスが悪いとコマのバランスが悪くなってUnityちゃんが落ちちゃいます！
                 </h1>
+                <h1>矢印ボタンを押して各画面のサンプルを見てみよう！</h1>
                 <h1>
                   バランスが悪いとコマのサイズが変化します！上から順番に主食・主菜・副菜・果物・乳製品を表しています！
                 </h1>
@@ -104,43 +131,6 @@ function TutorialModal() {
                 <h1>
                   最後に右上のresultボタンを押せばUnityちゃんが走れてるか表示されます！
                 </h1>
-              </div>
-              <div className="rounded-xl px-12">
-                <div className="relative mt-4">
-                  <button
-                    onClick={() => handleTabClick("tab1")}
-                    className={`tab-button ${
-                      selectedTab === "tab1"
-                        ? "active-tab bg-gray-400 text-white"
-                        : "bg-gray-300 text-gray-800"
-                    }`}
-                    style={{ marginRight: "10px", fontSize: "16px" }}
-                  >
-                    食事バランス完璧！
-                  </button>
-                  <button
-                    onClick={() => handleTabClick("tab2")}
-                    className={`tab-button ${
-                      selectedTab === "tab2"
-                        ? "active-tab bg-gray-400 text-white"
-                        : "bg-gray-300 text-gray-800"
-                    }`}
-                    style={{ marginRight: "10px", fontSize: "16px" }}
-                  >
-                    食事バランスがちょっと悪い
-                  </button>
-                  <button
-                    onClick={() => handleTabClick("tab3")}
-                    className={`tab-button ${
-                      selectedTab === "tab3"
-                        ? "active-tab bg-gray-400 text-white"
-                        : "bg-gray-300 text-gray-800"
-                    }`}
-                    style={{ fontSize: "16px" }}
-                  >
-                    食事バランスが凄く悪い
-                  </button>
-                </div>
               </div>
             </div>
           </div>

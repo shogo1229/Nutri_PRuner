@@ -2,24 +2,17 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-const API_KEY = process.env.REACT_FIREBASE_APIKEY;
-const AuthDomain = process.env.REACT_FIREBASE_AUTHDOMAIN;
-const ProjectID = process.env.REACT_FIREBASE_PROJECTID;
-const StorageBucket = process.env.REACT_FIREBASE_STORAGEBUCKET;
-const MessagingSenderID = process.env.REACT_FIREBASE_MESSAGINGSENDERID;
-const AppID = process.env.REACT_FIREBASE_APPID;
-const MeasurementID = process.env.REACT_FIREBASE_MEASUREMENTID;
+import config from "../config";
 
 //就活用アカウントのFireBase
 const firebaseConfig = {
-  apiKey: API_KEY,
-  authDomain: AuthDomain,
-  projectId: ProjectID,
-  storageBucket: StorageBucket,
-  messagingSenderId: MessagingSenderID,
-  appId: AppID,
-  measurementId: MeasurementID,
+  apiKey: config.FireBase_apiKey,
+  authDomain: config.FireBase_authDomain,
+  projectId: config.FireBase_projectId,
+  storageBucket: config.FireBase_storageBucket,
+  messagingSenderId: config.FireBase_messagingSenderId,
+  appId: config.FireBase_appId,
+  measurementId: config.FireBase_measurementId,
 };
 
 // Initialize Firebase
