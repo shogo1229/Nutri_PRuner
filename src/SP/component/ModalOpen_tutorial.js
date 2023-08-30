@@ -127,7 +127,7 @@ function TutorialModal() {
           <div className="my-2 bg-amber-200 rounded-xl px-3 py-3 mx-3 overflow-wrap">
             <h2 className="text-12 font-bold">概要</h2>
             食事バランスきっちり取れてますか？
-            ハッカソン中は特に3食インスタント食品にエナジードリンクのような限界生活をしていませんか！？
+            ハッカソン中は特に3食インスタント食品にエナジードリンクのような限界生活をしていませんか！
             食事メニューを選択してUnityちゃんをコマの上で走らせよう！！！
           </div>
           <div className=" bg-amber-200 rounded-xl px-3 py-3 mx-3">
