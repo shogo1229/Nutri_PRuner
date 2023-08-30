@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 function WebGL({ index }) {
   const { unityProvider, sendMessage, addEventListener, removeEventListener } =
     useUnityContext({
-      loaderUrl: "unity/Hakkason_webGL2_Z10.loader.js",
-      dataUrl: "unity/Hakkason_webGL2_Z10.data",
-      frameworkUrl: "unity/Hakkason_webGL2_Z10.framework.js",
-      codeUrl: "unity/Hakkason_webGL2_Z10.wasm",
+      loaderUrl: "unity/Hakkason_webGL1_build.loader.js",
+      dataUrl: "unity/Hakkason_webGL1_build.data",
+      frameworkUrl: "unity/Hakkason_webGL1_build.framework.js",
+      codeUrl: "unity/Hakkason_webGL1_build.wasm",
     });
 
   const [state, setFlag] = useState(false);
