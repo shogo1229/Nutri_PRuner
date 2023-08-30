@@ -4,22 +4,22 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const API_KEY = process.env.REACT_FIREBASE_APIKEY;
-const AuthDomain = process.env.REACT_FIREBASE_AUTHDOMAIN;
-const ProjectID = process.env.REACT_FIREBASE_PROJECTID;
-const StorageBucket = process.env.REACT_FIREBASE_STORAGEBUCKET;
-const MessagingSenderID = process.env.REACT_FIREBASE_MESSAGINGSENDERID;
-const AppID = process.env.REACT_FIREBASE_APPID;
-const MeasurementID = process.env.REACT_FIREBASE_MEASUREMENTID;
+const AUTHDOMAIN = process.env.REACT_FIREBASE_AUTHDOMAIN;
+const PROJECT_ID = process.env.REACT_FIREBASE_PROJECTID;
+const STORAGE_BUCKET = process.env.REACT_FIREBASE_STORAGEBUCKET;
+const MESSAGINGSENDER_ID = process.env.REACT_FIREBASE_MESSAGINGSENDERID;
+const APP_ID = process.env.REACT_FIREBASE_APPID;
+const MEASUREMENT_ID = process.env.REACT_FIREBASE_MEASUREMENTID;
 
 //就活用アカウントのFireBase
 const firebaseConfig = {
   apiKey: API_KEY,
-  authDomain: AuthDomain,
-  projectId: ProjectID,
-  storageBucket: StorageBucket,
-  messagingSenderId: MessagingSenderID,
-  appId: AppID,
-  measurementId: MeasurementID,
+  authDomain: AUTHDOMAIN,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGINGSENDER_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID,
 };
 
 // Initialize Firebase
