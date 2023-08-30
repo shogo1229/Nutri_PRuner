@@ -32,15 +32,22 @@ function WebGL({ index }) {
     0
   );
 
-  let Unity_scene = 5;
+  let Unity_scene = 0;
 
-  // if (sum === 0) {
-  //   Unity_scene = 1;
-  // } else if (1 < sum && sum < 10) {
-  //   Unity_scene = 2;
-  // } else if (sum > 10) {
-  //   Unity_scene = 3;
-  // }
+  if (sum === 0) {
+    Unity_scene = 0;
+  } else if (1 < sum && sum < 3) {
+    Unity_scene = 1;
+  } else if (3 < sum && sum < 6) {
+    Unity_scene = 2;
+  } else if (6 < sum && sum < 8) {
+    Unity_scene = 3;
+  } else if (8 < sum && sum < 10) {
+    Unity_scene = 4;
+  } else if (sum > 10) {
+    Unity_scene = 5;
+  }
+
   console.log("Use Scene", Unity_scene);
   useEffect(() => {
     if (loadFlag) {
