@@ -10,7 +10,7 @@ const STORAGE_BUCKET = process.env.REACT_FIREBASE_STORAGEBUCKET;
 const MESSAGINGSENDER_ID = process.env.REACT_FIREBASE_MESSAGINGSENDERID;
 const APP_ID = process.env.REACT_FIREBASE_APPID;
 const MEASUREMENT_ID = process.env.REACT_FIREBASE_MEASUREMENTID;
-
+const CHAT = process.env.REACT_APP_CHAT;
 //就活用アカウントのFireBase
 const firebaseConfig = {
   apiKey: API_KEY,
@@ -24,6 +24,7 @@ const firebaseConfig = {
 
 console.log("Get AWS");
 console.log(firebaseConfig);
+console.log(CHAT);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
