@@ -71,6 +71,8 @@ function WebGL({ index }) {
     setFlag(() => true);
   };
 
+  console.log(Unity_scene);
+
   const compareValues = (value) => {
     if (value === 0) {
       console.log("just");
