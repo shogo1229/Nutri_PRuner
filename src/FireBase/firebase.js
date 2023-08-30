@@ -22,6 +22,9 @@ const firebaseConfig = {
   measurementId: MEASUREMENT_ID,
 };
 
+console.log("Get AWS");
+console.log(firebaseConfig);
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
