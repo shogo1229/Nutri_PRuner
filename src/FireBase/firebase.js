@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-const API_KEY = process.env.REACT_FIREBASE_APIKEY;
-const AUTHDOMAIN = process.env.REACT_FIREBASE_AUTHDOMAIN;
-const PROJECT_ID = process.env.REACT_FIREBASE_PROJECTID;
-const STORAGE_BUCKET = process.env.REACT_FIREBASE_STORAGEBUCKET;
-const MESSAGINGSENDER_ID = process.env.REACT_FIREBASE_MESSAGINGSENDERID;
-const APP_ID = process.env.REACT_FIREBASE_APPID;
-const MEASUREMENT_ID = process.env.REACT_FIREBASE_MEASUREMENTID;
+const API_KEY = process.env.REACT_APP_FIREBASE;
+const AUTHDOMAIN = process.env.REACT_APP_AUTHDOMAIN;
+const PROJECT_ID = process.env.REACT_APP_PROJECTID;
+const STORAGE_BUCKET = process.env.REACT_APP_STORAGEBUCKET;
+const MESSAGINGSENDER_ID = process.env.REACT_APP_MESSAGINGSENDERID;
+const APP_ID = process.env.REACT_APP_APPID;
+const MEASUREMENT_ID = process.env.REACT_APP_MEASUREMENTID;
 const CHAT = process.env.REACT_APP_CHAT;
 //就活用アカウントのFireBase
 const firebaseConfig = {
