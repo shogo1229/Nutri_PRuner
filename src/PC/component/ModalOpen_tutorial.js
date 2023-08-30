@@ -2,9 +2,12 @@
 import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
-import UnityNormalGIF from "../img/UnityRun_Normal.gif";
-import UnityfalldownGIF from "../img/UnityRun_falldown.gif";
-import UnityguraguraGIF from "../img/UnityRun_guragura.gif";
+import UnityRun_waitGIF from "../img/UnityRun_wait.gif";
+import Unityguragura_Lv1GIF from "../img/UnityRun_guragura_lv1.gif";
+import Unityguragura_Lv2GIF from "../img/UnityRun_guragura_lv2.gif";
+import Unityguragura_Lv3GIF from "../img/UnityRun_guragura_lv3.gif";
+import Unityguragura_Lv4GIF from "../img/UnityRun_guragura_lv4.gif";
+import Unityguragura_Lv5GIF from "../img/UnityRun_falldown_lv5.gif";
 import Next from "../img/next.png";
 import blance_koma from "../img/balance_koma.jpg";
 
@@ -16,11 +19,14 @@ function TutorialModal() {
     setModalIsOpen(false);
   };
   const handleNextImageClick = () => {
-    setCurrentImage((currentImage + 1) % 3);
+    setCurrentImage((currentImage + 1) % 6);
   };
 
+  const statekoma = 
+    ["待機", "バランス良い", "バランス少し微妙", "バランス微妙", "バランスかなり悪い", "バランス壊滅的"];
+
   const handlePreviousImageClick = () => {
-    setCurrentImage((currentImage - 1 + 3) % 3);
+    setCurrentImage((currentImage - 1 + 6) % 6);
   };
   return (
     <>
@@ -35,7 +41,7 @@ function TutorialModal() {
             <div>
               <img
                 src={
-                  [UnityNormalGIF, UnityguraguraGIF, UnityfalldownGIF][
+                  [UnityRun_waitGIF, Unityguragura_Lv1GIF, Unityguragura_Lv2GIF, Unityguragura_Lv3GIF, Unityguragura_Lv4GIF, Unityguragura_Lv5GIF][
                     currentImage
                   ]
                 }
@@ -50,33 +56,37 @@ function TutorialModal() {
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <div
-                style={{ flex: "1", width: "50%", justifyContent: "center" }}
-              >
+              <div style={{ flex: "0.5 1 0", width: "25%" }}>
                 <img
                   src={Next}
                   onClick={handlePreviousImageClick}
                   className="tab-image"
                   style={{
-                    width: "10%",
+                    width: "20%",
                     transform: "scaleX(-1)",
                     display: "block",
                     margin: "0 auto",
                   }}
                 />
               </div>
-              <div style={{ flex: "1", width: "50%" }}>
+              <div className="flex 1 1 0 font-bold width 50  text-[#37AB9D]">
+                <h1>クリックして他のコマも見てみてね！ </h1>
+              </div>
+              <div style={{ flex: "0.5 1 0", width: "25%" }}>
                 <img
                   src={Next}
                   onClick={handleNextImageClick}
                   className="tab-image"
                   style={{
-                    width: "10%",
+                    width: "20%",
                     display: "block",
                     margin: "0 auto",
                   }}
                 />
               </div>
+            </div>
+            <div className="flex justify-center font-bold">
+                <h1>現在の状態：{statekoma[currentImage]}</h1>
             </div>
           </div>
           <div style={{ flex: "1", overflow: "auto", width: "50%" }}>
