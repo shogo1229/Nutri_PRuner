@@ -22,6 +22,8 @@ import ChatGPT from "./component/ChatGPT";
 //ヘッダー---------------------------------------------------------------------------------------------------------------------------------
 import Header from "./component/Header";
 
+//料理選択画面--------------------------------------------------------------------------------------------------------------------------------------
+
 //Redux actions---------------------------------------------------------------------------------------------------------------------------------
 import {
   updateSelectedDishes_dinner,
@@ -192,123 +194,95 @@ const MobileComponent = () => {
       <div style={{ display: "flex" }}>
         <TutorialModal />
       </div>
-      <div
-        style={{ display: "flex", flexDirection: "column", height: "100vh" }}
-      >
-        <header style={{ backgroundColor: "#F3F3F3", padding: "16px" }}>
-          <Header />
-        </header>
+      <header style={{ backgroundColor: "#F3F3F3", padding: "16px" }}>
+        <Header />
+      </header>
+      <div className="bg-red-200">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button
+            className={ButtonClassStyle}
+            onClick={handleOpenModal_morning}
+          >
+            <img src={morningimg} alt="Morning" />
+          </button>
+          <button className={ButtonClassStyle} onClick={handleOpenModal_lunch}>
+            <img src={lunchimg} alt="Lunch" />
+          </button>
+          <button className={ButtonClassStyle} onClick={handleOpenModal_dinner}>
+            <img src={dinnerimg} alt="dinner" />
+          </button>
+          <button className={ButtonClassStyle} onClick={handleOpenModal_snack}>
+            <img src={snackimg} alt="Snack" />
+          </button>
+          <button
+            className={ButtonClassStyle}
+            onClick={() => {
+              const allSelectedDishes = [
+                ...selectedDishes_morning,
+                ...selectedDishes_lunch,
+                ...selectedDishes_dinner,
+                ...selectedDishes_snack,
+              ];
+              setSelectedDishes(allSelectedDishes);
+              handleCalcNutri(allSelectedDishes);
+              handleExecuteElements();
+            }}
+          >
+            <img src={upload} alt="upload" />
+          </button>
+        </div>
 
-        <div className="flex h-screen">
-          <div className="w-1/5 bg-primary bg-red-200">
-            {/*画面分割　左*/}
-            <div className="flex h-screen">
-              <div className="m-auto flex flex-col items-center space-y-4">
-                <button
-                  className={ButtonClassStyle}
-                  onClick={handleOpenModal_morning}
-                >
-                  <img src={morningimg} alt="Morning" className="w-10" />
-                </button>
-                <button
-                  className={ButtonClassStyle}
-                  onClick={handleOpenModal_lunch}
-                >
-                  <img src={lunchimg} alt="Lunch" className="w-10" />
-                </button>
-                <button
-                  className={ButtonClassStyle}
-                  onClick={handleOpenModal_dinner}
-                >
-                  <img src={dinnerimg} alt="dinner" className="w-10" />
-                </button>
-                <button
-                  className={ButtonClassStyle}
-                  onClick={handleOpenModal_snack}
-                >
-                  <img src={snackimg} alt="Snack" className="w-10" />
-                </button>
-                <button
-                  className={ButtonClassStyle}
-                  onClick={() => {
-                    const allSelectedDishes = [
-                      ...selectedDishes_morning,
-                      ...selectedDishes_lunch,
-                      ...selectedDishes_dinner,
-                      ...selectedDishes_snack,
-                    ];
-                    setSelectedDishes(allSelectedDishes);
-                    handleCalcNutri(allSelectedDishes);
-                    handleExecuteElements();
-                  }}
-                >
-                  <img src={upload} alt="upload" className="w-10" />
-                </button>
-              </div>
-            </div>
-
-            {isModalOpen_morning && (
-              // eslint-disable-next-line react/jsx-pascal-case
-              <ModalOpen_morning
-                Menu="morning"
-                closeModalFn={handleCloseModal_morning}
-              />
-            )}
-            {isModalOpen_lunch && (
-              // eslint-disable-next-line react/jsx-pascal-case
-              <ModalOpen_lunch
-                Menu="lunch"
-                closeModalFn={handleCloseModal_lunch}
-              />
-            )}
-            {isModalOpen_dinner && (
-              // eslint-disable-next-line react/jsx-pascal-case
-              <ModalOpen_dinner
-                Menu="dinner"
-                closeModalFn={handleCloseModal_dinner}
-              />
-            )}
-            {isModalOpen_snack && (
-              // eslint-disable-next-line react/jsx-pascal-case
-              <ModalOpen_snack
-                Menu="snack"
-                closeModalFn={handleCloseModal_snack}
-              />
-            )}
-          </div>
-          <div className="w-4/5 bg-secondary bg-red-100">
-            {/*画面分割　右*/}
-            <WebGL index={toWebGL} />
-            <div
-              style={{
-                flex: "1 1 40%",
-                border: "8px solid #37AB9D",
-                borderRadius: "15px",
-                overflow: "auto",
-                maxHeight: executeElements ? "none" : "300px", // 適切な高さを設定
-              }}
-            >
-              {executeElements && (
-                <>
-                  {toChatGPT.length > 0 && (
-                    <h2 className="mt-3 mx-3 font-bold">
-                      その食事メニューでは{toChatGPT}が不足しています！
-                      <br />
-                      その食事メニューに以下の料理を加えてみてはいかがですか？
-                    </h2>
-                  )}
-                  {toChatGPT.length > 0 && <ChatGPT index={toChatGPT} />}
-
-                  {toChatGPT.length === 0 && (
-                    <h2 className="mt-3 mx-3 font-bold">
-                      不足ではありませんが、もしかして食べすぎてませんか？
-                      コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！
-                    </h2>
-                  )}
-                </>
+        {isModalOpen_morning && (
+          // eslint-disable-next-line react/jsx-pascal-case
+          <ModalOpen_morning
+            Menu="morning"
+            closeModalFn={handleCloseModal_morning}
+          />
+        )}
+        {isModalOpen_lunch && (
+          // eslint-disable-next-line react/jsx-pascal-case
+          <ModalOpen_lunch Menu="lunch" closeModalFn={handleCloseModal_lunch} />
+        )}
+        {isModalOpen_dinner && (
+          // eslint-disable-next-line react/jsx-pascal-case
+          <ModalOpen_dinner
+            Menu="dinner"
+            closeModalFn={handleCloseModal_dinner}
+          />
+        )}
+        {isModalOpen_snack && (
+          // eslint-disable-next-line react/jsx-pascal-case
+          <ModalOpen_snack Menu="snack" closeModalFn={handleCloseModal_snack} />
+        )}
+        <WebGL index={toWebGL} />
+        <div
+          style={{
+            flex: "1 1 40%",
+            border: "8px solid #37AB9D",
+            borderRadius: "15px",
+            overflow: "auto",
+            maxHeight: executeElements ? "none" : "300px", // 適切な高さを設定
+          }}
+        >
+          {executeElements && (
+            <>
+              {toChatGPT.length > 0 && (
+                <h2 className="mt-3 mx-3 font-bold">
+                  その食事メニューでは{toChatGPT}が不足しています！
+                  <br />
+                  その食事メニューに以下の料理を加えてみてはいかがですか？
+                </h2>
               )}
-            </div>
-          </div>
+              {toChatGPT.length > 0 && <ChatGPT index={toChatGPT} />}
+
+              {toChatGPT.length === 0 && (
+                <h2 className="mt-3 mx-3 font-bold">
+                  不足ではありませんが、もしかして食べすぎてませんか？
+                  コマの表示を見てどの栄養素が摂りすぎか確認しましょう！！
+                </h2>
+              )}
+            </>
+          )}
         </div>
       </div>
     </>
