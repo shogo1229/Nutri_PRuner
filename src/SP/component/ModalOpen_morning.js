@@ -2,6 +2,8 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedDishes_morning } from "../actions/updateSelectedDishes";
 import { useTodos } from "../../FireBase/TodosProvider"; //Context API
+import crossmark from "../img/crossmark.png";
+import checkmark from "../img/checkmark.png";
 
 const ModalOpen_morning = ({ Menu, closeModalFn }) => {
   const dispatch = useDispatch();
@@ -41,14 +43,17 @@ const ModalOpen_morning = ({ Menu, closeModalFn }) => {
       >
         {/* selected_dishesのみを表示する部分 */}
         <div className="flex flex-wrap h-1/2 justify-center mb-4 rounded-xl border-solid border-[#37AB9D] border-8 overflow-y-scroll">
-          {selectedDishes_morning.map((selectedDish) => (
-            <div
-              key={selectedDish.id}
-              className="px-4 h-10 m-2 flex items-center justify-center rounded-full bg-amber-300"
-              onClick={() => removeDishSelection_morning(selectedDish)} // ここで選択解除の関数を呼ぶ
-            >
-              {selectedDish.name}
-            </div>
+            {selectedDishes_morning.map((selectedDish) => (
+               <button 
+                  key={selectedDish.id} 
+                  onClick={() => removeDishSelection_morning(selectedDish)}  // ここで選択解除の関数を呼ぶ
+               >
+                <div className="px-4 h-10 m-2 flex items-center justify-center rounded-full bg-amber-300">
+                  <img src={crossmark} alt="cross" />
+                  {selectedDish.name}
+                </div>
+              </button>
+
           ))}
         </div>
 
@@ -63,13 +68,16 @@ const ModalOpen_morning = ({ Menu, closeModalFn }) => {
               return null; // 既に選択されている場合は何も表示しない
             }
             return (
-              <div
-                key={dish_morning.id}
-                className="px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full"
-                onClick={() => toggleDishSelection_morning(dish_morning)}
-              >
-                {dish_morning.name}
-              </div>
+                <button
+                  key={dish_morning.id}
+                  onClick={() => toggleDishSelection_morning(dish_morning)}
+                >
+                  <div className="px-4 py-2 bg-gray-200 m-2 flex items-center justify-center rounded-full">
+                  <img src={checkmark} alt="check" />
+                  {dish_morning.name}
+                  </div>
+                </button>
+              
             );
           })}
         </div>
