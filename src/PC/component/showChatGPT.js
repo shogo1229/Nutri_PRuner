@@ -31,7 +31,6 @@ const showChatGPT = ({ toChatGPT }) => {
             {toChatGPT.length > 0 && (
               <h2 className="mt-3 mx-3 font-bold">
                 その食事メニューでは{toChatGPT}が不足しています！
-                <br />
                 その食事メニューに以下の料理を加えてみてはいかがですか？
               </h2>
             )}
