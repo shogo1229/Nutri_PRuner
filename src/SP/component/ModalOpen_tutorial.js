@@ -2,9 +2,12 @@
 import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
-import UnityNormalGIF from "../img/UnityRun_Normal.gif";
-import UnityfalldownGIF from "../img/UnityRun_falldown.gif";
-import UnityguraguraGIF from "../img/UnityRun_guragura.gif";
+import UnityRun_waitGIF from "../img/UnityRun_wait.gif";
+import Unityguragura_Lv1GIF from "../img/UnityRun_guragura_lv1.gif";
+import Unityguragura_Lv2GIF from "../img/UnityRun_guragura_lv2.gif";
+import Unityguragura_Lv3GIF from "../img/UnityRun_guragura_lv3.gif";
+import Unityguragura_Lv4GIF from "../img/UnityRun_guragura_lv4.gif";
+import Unityguragura_Lv5GIF from "../img/UnityRun_falldown_lv5.gif";
 import Next from "../img/next.png";
 
 function TutorialModal() {
@@ -15,11 +18,11 @@ function TutorialModal() {
     setModalIsOpen(false);
   };
   const handleNextImageClick = () => {
-    setCurrentImage((currentImage + 1) % 3);
+    setCurrentImage((currentImage + 1) % 6);
   };
 
   const handlePreviousImageClick = () => {
-    setCurrentImage((currentImage - 1 + 3) % 3);
+    setCurrentImage((currentImage - 1 + 6) % 6);
   };
   return (
     <>
@@ -54,19 +57,19 @@ function TutorialModal() {
               <h2 className="text-30 text-[#05100f]">×</h2>
               <h2 className="text-30 text-[#d8d355]">Runner</h2>
             </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ flex: "1", width: "50%" }}>
-              <img
+          </div> 
+            <div className="flex flex-col flex center w-50">
+              <img 
                 src={
-                  [UnityNormalGIF, UnityguraguraGIF, UnityfalldownGIF][
+                  [UnityRun_waitGIF, Unityguragura_Lv1GIF, Unityguragura_Lv2GIF, Unityguragura_Lv3GIF, Unityguragura_Lv4GIF, Unityguragura_Lv5GIF][
                     currentImage
                   ]
                 }
               />
+            <div className="flex flex-col justify-center">
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <div
-                  style={{ flex: "1", width: "50%", justifyContent: "center" }}
+                  style={{ flex: "1", justifyContent: "center" }}
                 >
                   <img
                     src={Next}
@@ -94,10 +97,10 @@ function TutorialModal() {
                 </div>
               </div>
             </div>
-            <div style={{ flex: "1", width: "50%" }}>
+            <div style={{ flex: "1"}}>
               <h1>&nbsp;</h1>
               <div className="flex flex-row-reverse font-bold mr-2">
-                <h1 style={{ "font-size": "1rem" }}>© UTJ/UCL</h1>
+                <h1 style={{ "font-size": "0.1rem" }}>© UTJ/UCL</h1>
               </div>
               <div className="flex flex-row-reverse font-bold mr-2">
                 <h1 style={{ "font-size": "0.1rem" }}>食事バランスガイド</h1>
@@ -108,16 +111,21 @@ function TutorialModal() {
                 </h1>
               </div>
               <p
-                className="tab-description"
+                className="flex  flex-col flex-center text-center font-[Arial, sans-serif]  "
                 style={{
+                  display: "flex",
+                  flexDirection: "column",
                   fontFamily: "Arial, sans-serif",
                   whiteSpace: "pre-line",
+                  justifyContent: "center"
                 }}
               >
                 {
-                  [
+                  [ "待機時!Unityちゃんにも休みは必要！",
                     "バランスが良い時!Unityちゃんも元気に走ってます!",
-                    "ちょっとダメかも！Unityちゃんが走りづらそうです!",
+                    "ちょっと微妙かも！Unityちゃんが少し走り辛そう!",
+                    "バランスが崩れてる！！Unityちゃんが走りづらそうです!",
+                    "まずいよ！！Unityちゃんが必死にしがみついてる！",
                     "ダメダメです！Unityちゃんがコマから落ちちゃいました！",
                   ][currentImage]
                 }

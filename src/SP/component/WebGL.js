@@ -95,8 +95,8 @@ function WebGL({ index }) {
         <div
           style={{
             position: "absolute",
-            top: "50%",
-            left: "50%",
+            top: "90%",
+            left: "80%",
             transform: "translate(-50%, -50%)",
           }}
           className="unity"

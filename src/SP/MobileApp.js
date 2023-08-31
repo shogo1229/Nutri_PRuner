@@ -42,6 +42,7 @@ import lunchimg from "./img/humberger.png";
 import dinnerimg from "./img/dinner.png";
 import snackimg from "./img/coffee.png";
 import upload from "./img/upload.png";
+import upload2 from "./img/upload2.png";
 import UnityNormalGIF from "./img/UnityRun_Normal.gif";
 import blance_koma from "./img/balance_koma.jpg";
 
@@ -178,7 +179,7 @@ const MobileComponent = () => {
 
   //style定義---------------------------------------------------------------------------------------------------------------------------------
   const ButtonClassStyle =
-    "bg-[#37AB9D] hover:bg-emerald-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-full flex items-center px-6 py-2 font-bold text-32 mx-auto my-5";
+    "bg-[#37AB9D] hover:bg-emerald-600 transition-all duration-500 ease-out text-[#F3F3F3] w-72 rounded-md flex items-center px-2 py-2 font-bold text-32 mx-auto my-5";
 
   const rectangleStyle = {
     width: "300px",
@@ -198,7 +199,7 @@ const MobileComponent = () => {
         <Header />
       </header>
       <div className="bg-red-200">
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className="flex justify-center space-x-2 mx-5">
           <button
             className={ButtonClassStyle}
             onClick={handleOpenModal_morning}
@@ -215,7 +216,7 @@ const MobileComponent = () => {
             <img src={snackimg} alt="Snack" />
           </button>
           <button
-            className={ButtonClassStyle}
+            className="bg-red-400 hover:bg-orange-400 transition-all duration-500 ease-out text-[#F3F3F3] w-64 rounded-md flex items-center px-2 py-2 font-bold text-32 mx-auto my-5"
             onClick={() => {
               const allSelectedDishes = [
                 ...selectedDishes_morning,
@@ -228,7 +229,7 @@ const MobileComponent = () => {
               handleExecuteElements();
             }}
           >
-            <img src={upload} alt="upload" />
+            <img src={upload2} alt="upload2" />
           </button>
         </div>
 
@@ -254,6 +255,7 @@ const MobileComponent = () => {
           // eslint-disable-next-line react/jsx-pascal-case
           <ModalOpen_snack Menu="snack" closeModalFn={handleCloseModal_snack} />
         )}
+
         <WebGL index={toWebGL} />
         <div
           style={{
