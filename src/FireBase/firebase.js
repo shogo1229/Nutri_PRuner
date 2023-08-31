@@ -10,7 +10,7 @@ const STORAGE_BUCKET = process.env.REACT_APP_STORAGEBUCKET;
 const MESSAGINGSENDER_ID = process.env.REACT_APP_MESSAGINGSENDERID;
 const APP_ID = process.env.REACT_APP_APPID;
 const MEASUREMENT_ID = process.env.REACT_APP_MEASUREMENTID;
-//就活用アカウントのFireBase
+// 就活用アカウントのFireBase
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTHDOMAIN,
