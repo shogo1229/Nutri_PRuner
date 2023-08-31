@@ -21,12 +21,11 @@ function WebGL({ index }) {
   };
 
   let org_index = index.slice();
-  console.log("bef", org_index);
 
   index.forEach(function (value, id) {
     index[id] = Math.abs(index[id]);
   });
-  console.log("aft", org_index);
+
   let sum = index.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
