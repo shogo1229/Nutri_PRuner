@@ -94,7 +94,7 @@ function WebGL({ index }) {
     <>
       <div style={{ position: "relative" }}>
         <Unity unityProvider={unityProvider} style={unityStyle} />
-        {/* <div
+        <div
           style={{
             position: "absolute",
             top: "50%",
@@ -119,7 +119,7 @@ function WebGL({ index }) {
               Result
             </button>
           </a>
-        </div> */}
+        </div>
       </div>
     </>
   );
