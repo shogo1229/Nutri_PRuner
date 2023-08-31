@@ -17,7 +17,7 @@ function WebGL({ index }) {
   const unityStyle = {
     width: "100%",
     height: "70vh",
-    //visibility: state ? "visible" : "hidden",
+    visibility: state ? "visible" : "hidden",
   };
 
   let org_index = index.slice();
@@ -70,8 +70,6 @@ function WebGL({ index }) {
     sendMessage("4sou", "transformKoma", sou4);
     setFlag(() => true);
   };
-
-  console.log(Unity_scene);
 
   const compareValues = (value) => {
     if (value === 0) {
