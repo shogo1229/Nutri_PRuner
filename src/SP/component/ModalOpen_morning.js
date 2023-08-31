@@ -2,7 +2,6 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedDishes_morning } from "../actions/updateSelectedDishes";
 import { useTodos } from "../../FireBase/TodosProvider"; //Context API
-import { motion } from "framer-motion";
 
 const ModalOpen_morning = ({ Menu, closeModalFn }) => {
   const dispatch = useDispatch();
@@ -13,16 +12,16 @@ const ModalOpen_morning = ({ Menu, closeModalFn }) => {
 
   const removeDishSelection_morning = (dish) => {
     const updatedSelection = selectedDishes_morning.filter(
-      selected => selected.value !== dish.value
+      (selected) => selected.value !== dish.value
     );
     dispatch(updateSelectedDishes_morning(updatedSelection));
-  }
+  };
 
   const toggleDishSelection_morning = (dish_morning) => {
     const isSelected = selectedDishes_morning.some(
       (selected) => selected.value === dish_morning.value
     );
-  
+
     if (isSelected) {
       removeDishSelection_morning(dish_morning);
     } else {
@@ -42,22 +41,26 @@ const ModalOpen_morning = ({ Menu, closeModalFn }) => {
       >
         {/* selected_dishesのみを表示する部分 */}
         <div className="flex flex-wrap h-1/2 justify-center mb-4 rounded-xl border-solid border-[#37AB9D] border-8 overflow-y-scroll">
-            {selectedDishes_morning.map((selectedDish) => (
-               <div 
-                  key={selectedDish.id} 
-                  className="px-4 h-10 m-2 flex items-center justify-center rounded-full bg-amber-300"
-                  onClick={() => removeDishSelection_morning(selectedDish)}  // ここで選択解除の関数を呼ぶ
-               >
-                  {selectedDish.name}
-              </div>
+          {selectedDishes_morning.map((selectedDish) => (
+            <div
+              key={selectedDish.id}
+              className="px-4 h-10 m-2 flex items-center justify-center rounded-full bg-amber-300"
+              onClick={() => removeDishSelection_morning(selectedDish)} // ここで選択解除の関数を呼ぶ
+            >
+              {selectedDish.name}
+            </div>
           ))}
         </div>
 
         {/* dish_morningを選択する部分 */}
         <div className="flex flex-wrap h-1/2 justify-center rounded-xl border-solid border-[#37AB9D] border-8 overflow-y-scroll">
           {todos.map((dish_morning) => {
-            if (selectedDishes_morning.some(selected => selected.value === dish_morning.value)) {
-              return null;  // 既に選択されている場合は何も表示しない
+            if (
+              selectedDishes_morning.some(
+                (selected) => selected.value === dish_morning.value
+              )
+            ) {
+              return null; // 既に選択されている場合は何も表示しない
             }
             return (
               <div
