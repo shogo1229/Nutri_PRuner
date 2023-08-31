@@ -102,7 +102,7 @@ function WebGL({ index }) {
         >
           <a
             href="#_"
-            className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-[#37AB9D] rounded-full hover:bg-white group"
+            className="relative inline-flex items-center justify-start px-5 py-3 overflow-hidden font-medium transition-all bg-[#37AB9D] rounded-full hover:bg-white group"
             style={{ visibility: buttonState ? "visible" : "hidden" }}
           >
             <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"></span>

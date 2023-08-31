@@ -198,7 +198,7 @@ const MobileComponent = () => {
       <header style={{ backgroundColor: "#F3F3F3", padding: "16px" }}>
         <Header />
       </header>
-      <div className="bg-red-200">
+      <div>
         <div className="flex justify-center space-x-2 mx-5">
           <button
             className={ButtonClassStyle}
