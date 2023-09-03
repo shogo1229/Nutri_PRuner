@@ -11,7 +11,7 @@
 
 # DEMO
 
-デモページ URL「https://main.d29kb7kvs692vl.amplifyapp.com/　」
+デモページ URL「https://main.d3dewstwa299i.amplifyapp.com/　」
 
 デモ動画「https://www.youtube.com/watch?v=zqaF00lEQAU　」
 
