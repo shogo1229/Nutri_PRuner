@@ -11,35 +11,8 @@
 マンスリーハッカソンでは最優秀賞を受賞した「[https://twitter.com/geek_pjt/status/1665288262314000385](https://twitter.com/geek_pjt/status/1665288262314000385?s=20)」
 
 # 栄養バランスの評価例
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <div style="flex: 1; width: 30%;">
-        待機状態
-        <img src="Readme_img/wait.gif" alt="Image 1">
-    </div>
-    <div style="flex: 1; width: 30%;">
-        完璧
-        <img src="Readme_img/lv1.gif" alt="Image 2">
-    </div>
-    <div style="flex: 1; width: 30%;">
-        少し悪い
-        <img src="Readme_img/lv2.gif" alt="Image 3">
-    </div>
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <div style="flex: 1; width: 30%;">
-        悪い
-        <img src="Readme_img/lv3.gif" alt="Image 4">
-    </div>
-    <div style="flex: 1; width: 30%;">
-        かなり悪い
-        <img src="Readme_img/lv4.gif" alt="Image 5">
-    </div>
-    <div style="flex: 1; width: 30%;">
-        壊滅的...
-        <img src="Readme_img/lv5.gif" alt="Image 6">
-    </div>
-</div>
+![Image 1](Readme_img/wait.gif) ![Image 2](Readme_img/lv1.gif) ![Image 3](Readme_img/lv2.gif)
+![Image 4](Readme_img/lv3.gif) ![Image 5](Readme_img/lv4.gif) ![Image 6](Readme_img/lv5.gif)
 
 # DEMO
 
